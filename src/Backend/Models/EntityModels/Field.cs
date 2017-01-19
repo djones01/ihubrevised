@@ -16,6 +16,7 @@ namespace Backend.Models.EntityModels
         public int FieldId { get; set; }
         public string Datatype { get; set; }
         public string Name { get; set; }
+        public int Length { get; set; }
 
         public ICollection<Rule> Rules { get; set; }
         public ICollection<Condition> Conditions { get; set; }

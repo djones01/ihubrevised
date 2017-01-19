@@ -1,5 +1,5 @@
---temp-output:C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\obj\Debug\netcoreapp1.0\
---out:C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\bin\Debug\netcoreapp1.0\Backend.dll
+--temp-output:C:\Users\DJ\Desktop\ihubrevised\src\Backend\obj\Debug\netcoreapp1.0\
+--out:C:\Users\DJ\Desktop\ihubrevised\src\Backend\bin\Debug\netcoreapp1.0\Backend.dll
 --define:DEBUG
 --define:TRACE
 --define:NETCOREAPP1_0
@@ -240,31 +240,33 @@
 --reference:C:\Users\DJ\.nuget\packages\System.Threading.Timer\4.3.0\ref\netstandard1.2\System.Threading.Timer.dll
 --reference:C:\Users\DJ\.nuget\packages\System.Xml.ReaderWriter\4.3.0\ref\netstandard1.3\System.Xml.ReaderWriter.dll
 --reference:C:\Users\DJ\.nuget\packages\System.Xml.XDocument\4.3.0\ref\netstandard1.3\System.Xml.XDocument.dll
---resource:"C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\obj\Debug\netcoreapp1.0\Backenddotnet-compile.deps.json",Backend.deps.json
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Config.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Program.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Startup.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Controllers\ClientsController.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Controllers\LogsController.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Migrations\20170119050911_initmig.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Migrations\20170119050911_initmig.Designer.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Migrations\GTiHubContextModelSnapshot.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Models\EntityModels\ApplicationUser.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Models\EntityModels\Client.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Models\EntityModels\Condition.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Models\EntityModels\DataObject.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Models\EntityModels\Field.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Models\EntityModels\GTiHubContext.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Models\EntityModels\IEntity.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Models\EntityModels\Map.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Models\EntityModels\MapObjectFormat.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Models\EntityModels\MapObjectTarget.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Models\EntityModels\ObjectFormat.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Models\EntityModels\ObjectFormatField.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Models\EntityModels\ObjectTarget.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Models\EntityModels\Project.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Models\EntityModels\ProjectMap.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Models\EntityModels\Rule.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Models\EntityModels\RuleField.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Models\EntityModels\Transformation.cs
-C:\Users\DJ\Desktop\GTiHub---CLI - Revised\revisedihub\src\Backend\Models\EntityModels\UserProjectSec.cs
+--resource:"C:\Users\DJ\Desktop\ihubrevised\src\Backend\obj\Debug\netcoreapp1.0\Backenddotnet-compile.deps.json",Backend.deps.json
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Config.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Program.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Startup.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Controllers\ClientsController.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Controllers\LogsController.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Migrations\20170119050911_initmig.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Migrations\20170119050911_initmig.Designer.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Migrations\20170119073758_initmig2.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Migrations\20170119073758_initmig2.Designer.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Migrations\GTiHubContextModelSnapshot.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Models\EntityModels\ApplicationUser.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Models\EntityModels\Client.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Models\EntityModels\Condition.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Models\EntityModels\DataObject.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Models\EntityModels\Field.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Models\EntityModels\GTiHubContext.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Models\EntityModels\IEntity.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Models\EntityModels\Map.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Models\EntityModels\MapObjectFormat.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Models\EntityModels\MapObjectTarget.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Models\EntityModels\ObjectFormat.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Models\EntityModels\ObjectFormatField.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Models\EntityModels\ObjectTarget.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Models\EntityModels\Project.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Models\EntityModels\ProjectMap.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Models\EntityModels\Rule.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Models\EntityModels\RuleField.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Models\EntityModels\Transformation.cs
+C:\Users\DJ\Desktop\ihubrevised\src\Backend\Models\EntityModels\UserProjectSec.cs

@@ -6,11 +6,12 @@ import { ObjectFormatEditComponent } from './object-format-edit/object-format-ed
 import { ObjectFormatListComponent } from './object-format-list/object-format-list.component';
 import { ObjectTargetEditComponent } from './object-target-edit/object-target-edit.component';
 import { ObjectTargetListComponent } from './object-target-list/object-target-list.component';
+import { FieldEditComponent } from './field-edit/field-edit.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [DataObjectEditComponent, DataObjectListComponent, ObjectFormatEditComponent, ObjectFormatListComponent, ObjectTargetEditComponent, ObjectTargetListComponent]
+  declarations: [DataObjectEditComponent, DataObjectListComponent, ObjectFormatEditComponent, ObjectFormatListComponent, ObjectTargetEditComponent, ObjectTargetListComponent, FieldEditComponent]
 })
 export class DataObjectModule { }

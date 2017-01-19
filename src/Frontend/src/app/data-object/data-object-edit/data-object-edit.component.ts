@@ -27,7 +27,7 @@ export class DataObjectComponent implements OnInit {
     }
 
     initDataObjectFormat() {
-        this.dataObjectForm = this._fb.group({
+        return this._fb.group({
             name: ['', Validators.required],
             description: ['', Validators.required],
             effective_Date: [new Date()],
@@ -37,12 +37,12 @@ export class DataObjectComponent implements OnInit {
             autoProcessed: [false],
             fixedLength: [false],
             length: [null],
-            fields: this._fb.array([]);
+            fields: this._fb.array([])
         });
     }
 
     initDataObjectTarget() {
-        this.dataObjectForm = this._fb.group({
+        return this._fb.group({
             name: ['', Validators.required],
             description: ['', Validators.required],
             effective_Date: [new Date()],
@@ -50,6 +50,30 @@ export class DataObjectComponent implements OnInit {
             objectFormats: this._fb.array([]),
             objectTargets: this._fb.array([])
         });
+    }
+
+    addDataObjectFormat() {
+        // add address to the list
+        const control = <FormArray>this.dataObjectForm.controls['objectFormats'];
+        control.push(this.initDataObjectFormat());
+    }
+
+    removetDataObjectFormat(i: number) {
+        // remove address from the list
+        const control = <FormArray>this.dataObjectForm.controls['objectFormats'];
+        control.removeAt(i);
+    }
+
+    addDataObjectTarget() {
+        // add address to the list
+        const control = <FormArray>this.dataObjectForm.controls['objectTargets'];
+        control.push(this.initDataObjectTarget());
+    }
+
+    removetDataObjectTarget(i: number) {
+        // remove address from the list
+        const control = <FormArray>this.dataObjectForm.controls['objectTargets'];
+        control.removeAt(i);
     }
 
     newDataObject() {
