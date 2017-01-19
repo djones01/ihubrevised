@@ -1,0 +1,24 @@
+<ng-sidebar [(open)]="open" [closeOnClickOutside]="true" [position]="'right'" [keyClose]="true">
+    <p-panelMenu [model]="menuItems"></p-panelMenu>
+    <button type="button" class="btn btn-default pull-right" style="width: 100%" (click)="toggleSidebar()">
+        <span class="fa fa-close"></span>
+        Close
+    </button>
+</ng-sidebar>
+<nav class="navbar navbar-light fixed-top bg-faded">
+    <div class="form-inline">
+        <a routerLink="/pages/overview">
+            <img src="../../assets/images/grant-thornton-swirl-sm.png" alt="GTiHub">
+        </a> 
+        <button type="button" class="btn btn-default" style="margin-left: 10px;" (click)="toggleSidebar()">
+            <span class="fa fa-bars"></span>
+            Menu
+        </button>
+    </div>
+</nav>
+<div class="container-fluid add-margin-main-body">
+    <router-outlet></router-outlet>
+</div>
+
+
+
