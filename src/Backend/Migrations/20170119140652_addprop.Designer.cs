@@ -8,14 +8,32 @@ using Backend.Models.EntityModels;
 namespace Backend.Migrations
 {
     [DbContext(typeof(GTiHubContext))]
-    [Migration("20170119073758_initmig2")]
-    partial class initmig2
+    [Migration("20170119140652_addprop")]
+    partial class addprop
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Backend.Models.EntityModels.ApiSourceInfo", b =>
+                {
+                    b.Property<int>("ApiSourceInfoId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ObjectFormatId");
+
+                    b.Property<string>("SourceURL");
+
+                    b.HasKey("ApiSourceInfoId");
+
+                    b.HasIndex("ObjectFormatId")
+                        .IsUnique();
+
+                    b.ToTable("ApiSourceInfo");
+                });
 
             modelBuilder.Entity("Backend.Models.EntityModels.ApplicationUser", b =>
                 {
@@ -221,6 +239,26 @@ namespace Backend.Migrations
                     b.ToTable("Fields");
                 });
 
+            modelBuilder.Entity("Backend.Models.EntityModels.FileSourceInfo", b =>
+                {
+                    b.Property<int>("FileSourceInfoId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ObjectFormatId");
+
+                    b.Property<string>("SourceFileName");
+
+                    b.Property<string>("SourceFileType");
+
+                    b.HasKey("FileSourceInfoId");
+
+                    b.HasIndex("ObjectFormatId")
+                        .IsUnique();
+
+                    b.ToTable("FileSourceInfo");
+                });
+
             modelBuilder.Entity("Backend.Models.EntityModels.Map", b =>
                 {
                     b.Property<int>("MapId")
@@ -307,10 +345,6 @@ namespace Backend.Migrations
                     b.Property<int>("Length");
 
                     b.Property<string>("Name");
-
-                    b.Property<string>("SourceFileName");
-
-                    b.Property<string>("SourceURL");
 
                     b.HasKey("ObjectFormatId");
 
@@ -711,6 +745,14 @@ namespace Backend.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Backend.Models.EntityModels.ApiSourceInfo", b =>
+                {
+                    b.HasOne("Backend.Models.EntityModels.ObjectFormat", "ObjectFormat")
+                        .WithOne("ApiSourceInfo")
+                        .HasForeignKey("Backend.Models.EntityModels.ApiSourceInfo", "ObjectFormatId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("Backend.Models.EntityModels.ApplicationUser", b =>
                 {
                     b.HasOne("Backend.Models.EntityModels.Client")
@@ -728,6 +770,14 @@ namespace Backend.Migrations
                     b.HasOne("Backend.Models.EntityModels.Transformation", "Transformation")
                         .WithMany("Conditions")
                         .HasForeignKey("TransformationId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Backend.Models.EntityModels.FileSourceInfo", b =>
+                {
+                    b.HasOne("Backend.Models.EntityModels.ObjectFormat", "ObjectFormat")
+                        .WithOne("FileSourceInfo")
+                        .HasForeignKey("Backend.Models.EntityModels.FileSourceInfo", "ObjectFormatId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

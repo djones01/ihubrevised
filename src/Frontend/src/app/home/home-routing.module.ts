@@ -12,6 +12,7 @@ export const routes: Routes = [
         { path: 'overview', component: OverviewComponent },
         { path: 'user', loadChildren: 'app/user/user.module#UserModule' },
         { path: 'client', loadChildren: 'app/client/client.module#ClientModule' },
+        { path: 'data-object', loadChildren: 'app/data-object/data-object.module#DataObjectModule' },
         { path: 'about', component: AboutComponent }
     ]}   
 ];

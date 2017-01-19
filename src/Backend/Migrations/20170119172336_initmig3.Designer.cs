@@ -8,9 +8,10 @@ using Backend.Models.EntityModels;
 namespace Backend.Migrations
 {
     [DbContext(typeof(GTiHubContext))]
-    partial class GTiHubContextModelSnapshot : ModelSnapshot
+    [Migration("20170119172336_initmig3")]
+    partial class initmig3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
@@ -22,15 +23,11 @@ namespace Backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("FileFormat");
-
-                    b.Property<string>("FileName");
-
                     b.Property<int>("ObjectFormatId");
 
                     b.Property<int?>("ObjectTargetId");
 
-                    b.Property<string>("Url");
+                    b.Property<string>("SourceURL");
 
                     b.HasKey("ApiInfoId");
 
@@ -247,27 +244,19 @@ namespace Backend.Migrations
 
             modelBuilder.Entity("Backend.Models.EntityModels.FileInfo", b =>
                 {
-                    b.Property<int>("FileInfoId")
+                    b.Property<int>("FileSourceInfoId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("CompressFile");
-
-                    b.Property<string>("FileName");
-
-                    b.Property<int>("FileSizeLimit");
-
-                    b.Property<string>("FileSizeLimitUnits");
-
-                    b.Property<string>("FileType");
-
                     b.Property<int>("ObjectFormatId");
 
-                    b.Property<int>("ObjectTargetId");
+                    b.Property<int?>("ObjectTargetId");
 
-                    b.Property<int>("RowLimit");
+                    b.Property<string>("SourceFileName");
 
-                    b.HasKey("FileInfoId");
+                    b.Property<string>("SourceFileType");
+
+                    b.HasKey("FileSourceInfoId");
 
                     b.HasIndex("ObjectFormatId");
 
@@ -395,11 +384,7 @@ namespace Backend.Migrations
 
                     b.Property<int?>("DataObjectId");
 
-                    b.Property<string>("Description");
-
                     b.Property<bool>("EvalConditions");
-
-                    b.Property<string>("Name");
 
                     b.Property<bool>("StopOnError");
 
@@ -799,10 +784,9 @@ namespace Backend.Migrations
                         .HasForeignKey("ObjectFormatId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Backend.Models.EntityModels.ObjectTarget", "ObjectTarget")
+                    b.HasOne("Backend.Models.EntityModels.ObjectTarget")
                         .WithMany("FileInfos")
-                        .HasForeignKey("ObjectTargetId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ObjectTargetId");
                 });
 
             modelBuilder.Entity("Backend.Models.EntityModels.Map", b =>

@@ -3,10 +3,10 @@ import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'data-object-edit',
-  templateUrl: './source-edit.component.html',
-  styleUrls: ['./source-edit.component.css']
+  templateUrl: './data-object-edit.component.html',
+  styleUrls: ['./data-object-edit.component.css']
 })
-export class DataObjectComponent implements OnInit {
+export class DataObjectEditComponent implements OnInit {
     public dataObjectForm: FormGroup;
 
 
@@ -26,52 +26,54 @@ export class DataObjectComponent implements OnInit {
         });
     }
 
-    initDataObjectFormat() {
+    initObjectFormat() {
         return this._fb.group({
             name: ['', Validators.required],
             description: ['', Validators.required],
             effective_Date: [new Date()],
             active: [true],
-            sourceURL: [''],
-            fromBatch: [false],
-            autoProcessed: [false],
-            fixedLength: [false],
-            length: [null],
-            fields: this._fb.array([])
+            sourceGroup: this._fb.group({
+                fromBatch: [false],
+                autoProcessed: [false],
+                fixedLength: [false],
+                length: [null],
+                fields: this._fb.array([]),
+                apiInfos: this._fb.array([]),
+                fileInfos: this._fb.array([])
+            })    
         });
     }
 
-    initDataObjectTarget() {
+    initObjectTarget() {
         return this._fb.group({
             name: ['', Validators.required],
             description: ['', Validators.required],
             effective_Date: [new Date()],
             active: [true],
-            objectFormats: this._fb.array([]),
-            objectTargets: this._fb.array([])
+            checkTypes: [true],
+            evalConditions: [true],
+            stopOnError: [true],
+            apiInfos: this._fb.array([]),
+            fileInfos: this._fb.array([])
         });
     }
 
     addDataObjectFormat() {
-        // add address to the list
         const control = <FormArray>this.dataObjectForm.controls['objectFormats'];
-        control.push(this.initDataObjectFormat());
+        control.push(this.initObjectFormat());
     }
 
-    removetDataObjectFormat(i: number) {
-        // remove address from the list
+    removeObjectFormat(i: number) {
         const control = <FormArray>this.dataObjectForm.controls['objectFormats'];
         control.removeAt(i);
     }
 
     addDataObjectTarget() {
-        // add address to the list
         const control = <FormArray>this.dataObjectForm.controls['objectTargets'];
-        control.push(this.initDataObjectTarget());
+        control.push(this.initObjectTarget());
     }
 
-    removetDataObjectTarget(i: number) {
-        // remove address from the list
+    removeObjectTarget(i: number) {
         const control = <FormArray>this.dataObjectForm.controls['objectTargets'];
         control.removeAt(i);
     }

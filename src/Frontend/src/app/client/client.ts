@@ -1,4 +1,4 @@
-export interface IClient {
+export interface Client {
     clientId?: number;
     name: string;
     industry: string;
@@ -9,7 +9,7 @@ export interface IClient {
     projects?: any[];
 }
 
-export class Client implements IClient {
+export class Client implements Client {
     constructor(public name: string,
         public industry: string,
         public clientId?: number,

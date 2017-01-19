@@ -1,0 +1,48 @@
+<form [formGroup]="fileInfoForm">       
+    <div class="form-group">
+        <label>File Name</label>
+        <input type="text" class="form-control" formControlName="fileName">
+        <small *ngIf="!fileInfoForm.controls.fileName.valid" class="text-danger">
+            File Name is required
+        </small>
+    </div>
+    <div class="form-group">
+        <label>File Type</label>
+        <select class="form-control" formControlName="fileType">
+            <option value="" disabled selected>Select File Type</option>
+            <option *ngFor="let fileType of fileTypeOptions" [ngValue]="fileType.value">{{fileType.display}}</option>
+        </select>
+        <small *ngIf="!fileInfoForm.controls.fileType.valid" class="text-danger">
+            File Type is required
+        </small>
+    </div>
+    
+    <p-panel header="File Size Options" [toggleable]="true" [collapsed]="true">
+        <div class="form-group">
+            <label>Compress File</label>
+            <div>
+                <p-inputSwitch onLabel="Yes" offLabel="No" formControlName="compressFile"></p-inputSwitch>
+            </div>           
+        </div>
+        <div class="form-group">
+            <label>File Size Limit (0 = No Limit)</label>
+            <div class="input-group">
+                <input type="number" min="0" class="form-control" formControlName="fileSizeLimit">
+                <div class="input-group-btn">
+                    <select class="form-control" formControlName="fileSizeLimitUnits">
+                        <option value="0" disabled selected>Units</option>
+                        <option *ngFor="let units of unitOptions" [ngValue]="units.value">{{units.display}}</option>
+                    </select>
+                </div>
+            </div>
+            <small *ngIf="!fileInfoForm.controls.fileSizeLimitUnits.valid" class="text-danger">
+                Units Are Required
+            </small>
+        </div>
+        <div class="form-group">
+            <label>Row Limit (0 = No Limit)</label>
+             <input type="number" min="0" class="form-control" formControlName="rowLimit">      
+        </div>
+    </p-panel>
+    
+</form>

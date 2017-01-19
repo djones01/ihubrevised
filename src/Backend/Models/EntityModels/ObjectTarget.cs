@@ -14,12 +14,15 @@ namespace Backend.Models.EntityModels
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ObjectTargetId { get; set; }
-        public bool FileOutput { get; set; }
-        public string OutputName { get; set; }
-        public string OutputType { get; set; }
-        public string OutputURL { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+
+        public ICollection<ApiInfo> ApiInfos { get; set; }
+        public ICollection<FileInfo> FileInfos { get; set; }
+
         public bool CheckTypes { get; set; }
         public bool EvalConditions { get; set; }
+        public bool StopOnError { get; set; }
         
         public ICollection<Map> ObjectFormatFields { get; set; }
     }

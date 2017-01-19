@@ -1,3 +1,72 @@
-<p>
-  object-target-edit works!
-</p>
+<form [formGroup]="objectTargetForm">       
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" formControlName="name">
+        <small *ngIf="!objectTargetForm.controls.name.valid" class="text-danger">
+            Name is required
+        </small>
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control textarea-resize" formControlName="description"></textarea>
+        <small *ngIf="!objectTargetForm.controls.description.valid" class="text-danger">
+            Description is required
+        </small>
+    </div>
+    <div class="form-group">
+        <label>Effective Date</label>
+        <p-calendar formControlName="effective_Date"></p-calendar>
+    </div>
+    <div class="form-group">
+        <label for="active">Active</label>
+        <div>
+            <p-inputSwitch onLabel="Yes" offLabel="No" formControlName="active"></p-inputSwitch>
+        </div>           
+    </div>
+    <p-panel header="Target Infos" [toggleable]="true" styleClass="add-margin-bottom">
+        <div class="form-group">
+            <button type="button" class="btn btn-default" (click)="addFileInfo()">New File Info</button>
+            <button type="button" class="btn btn-default" (click)="addApiInfo()">New API Info</button>
+        </div>     
+        <div formArrayName="fileInfos">
+            <div class="card form-group" *ngFor="let fileInfo of objectTargetForm.controls.fileInfos.controls; let i=index">
+                <div class="card-header" >                               
+                     Target File Info<span class="fa fa-close pull-right" (click)="removeFileInfo(i)"></span>
+                </div>
+                <div class="card-block">
+                    <file-info-edit [group]="objectTargetForm.controls.fileInfos.controls[i]"></file-info-edit>
+                </div>
+            </div>
+        </div>
+        <div formArrayName="apiInfos">
+            <div class="card form-group" *ngFor="let fileInfo of objectTargetForm.controls.apiInfos.controls; let i=index">
+                <div class="card-header" >                               
+                     Target API Info<span class="fa fa-close pull-right" (click)="removeApiInfo(i)"></span>
+                </div>
+                <div class="card-block">
+                    <api-info-edit [group]="objectTargetForm.controls.apiInfos.controls[i]"></api-info-edit>
+                </div>
+            </div>
+        </div>
+    </p-panel>
+    <p-panel header="Target Options" [toggleable]="true" [collapsed]="true">
+        <div class="form-group">
+            <label>Check Types</label>
+            <div>
+                <p-inputSwitch onLabel="Yes" offLabel="No" formControlName="checkTypes"></p-inputSwitch>
+            </div>           
+        </div>
+        <div class="form-group">
+            <label>Evaluate Conditions</label>
+            <div>
+                <p-inputSwitch onLabel="Yes" offLabel="No" formControlName="evalConditions"></p-inputSwitch>
+            </div>         
+        </div>
+        <div class="form-group">
+            <label>Stop On Error</label>
+            <div>
+               <p-inputSwitch onLabel="Yes" offLabel="No" formControlName="stopOnError"></p-inputSwitch>
+            </div>     
+        </div>
+    </p-panel> 
+</form>

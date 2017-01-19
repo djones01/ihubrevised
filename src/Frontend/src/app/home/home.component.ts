@@ -8,16 +8,15 @@ import { MenuItem } from "primeng/primeng";
 })
 export class HomeComponent implements OnInit {
   currDate = Date.now();
+  private opened = false
+
+  toggleMainBar(){
+      this.opened = !this.opened;
+  }
 
   constructor() { }
 
-  private open: boolean = false;
-
     private menuItems: MenuItem[]
-
-    toggleSidebar(){
-        this.open = !this.open;
-    }
 
     ngOnInit() {
         this.menuItems = [
@@ -37,29 +36,17 @@ export class HomeComponent implements OnInit {
                 ]
             },
             {
-                label: "Sources",
+                label: "Data Objects",
                 items: [
                     {
                         label: "View All",
                         icon: "fa-binoculars",
-                        routerLink: ["/pages/source"]
+                        routerLink: ["/pages/data-object"]
                     },
                     {
                         label: "New",
                         icon: "fa-plus",
-                    }
-                ]
-            },
-            {
-                label: "Targets",
-                items: [
-                    {
-                        label: "View All",
-                        icon: "fa-binoculars"
-                    },
-                    {
-                        label: "New",
-                        icon: "fa-plus",
+                        routerLink: ["/pages/data-object/edit"]
                     }
                 ]
             },

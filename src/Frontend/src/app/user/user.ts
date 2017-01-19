@@ -1,4 +1,4 @@
-export interface IUser {
+export interface User {
     id?: number;
     firstName: string;
     lastName: string;
@@ -13,19 +13,13 @@ export interface IUser {
     roles: string[];
 }
 
-export class User implements IUser {
+export class User implements User {
     constructor(
         public firstName: string,
         public lastName: string,     
         public email: string,
         public roles: string[],
         public title?: string,
-        public phoneNumber?: string,
-        public id?: number,
-        public created_By?: string,
-        public creation_Date?: Date,
-        public modified_By?: string,
-        public date_Modified?: Date,
-        public projects?: any[]
+        public phoneNumber?: string
     ) { }
 }

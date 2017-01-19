@@ -1,3 +1,29 @@
-<p>
-  object-format-edit works!
-</p>
+<form [formGroup]="objectFormatForm">       
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" formControlName="name">
+        <small *ngIf="!objectFormatForm.controls.name.valid" class="text-danger">
+            Name is required
+        </small>
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control textarea-resize" formControlName="description"></textarea>
+        <small *ngIf="!objectFormatForm.controls.description.valid" class="text-danger">
+            Description is required
+        </small>
+    </div>
+    <div class="form-group">
+        <label>Effective Date</label>
+        <p-calendar formControlName="effective_Date"></p-calendar>
+    </div>
+    <div class="form-group">
+        <label for="active">Active</label>
+        <div>
+            <p-inputSwitch onLabel="Yes" offLabel="No" formControlName="active"></p-inputSwitch>
+        </div>           
+    </div>
+    <div class="form-group">
+        <button type="button" class="btn btn-secondary" (click)="editFields()">Edit Fields</button>
+    </div>
+</form>

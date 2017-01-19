@@ -14,8 +14,10 @@ namespace Backend.Models.EntityModels
         public int ObjectFormatId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string SourceFileName { get; set; }
-        public string SourceURL { get; set; }
+   
+        public ICollection<ApiInfo> ApiInfos { get; set; }
+        public ICollection<FileInfo> FileInfos { get; set; }    
+        
         public bool FromBatch { get; set; }
         public bool AutoProcessed { get; set; }
         public bool FixedLength { get; set; }

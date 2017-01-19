@@ -2,13 +2,13 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Validators, FormGroup, FormArray, FormBuilder, AbstractControl } from '@angular/forms';
 
 @Component({
-  selector: 'object-format-edit',
-  templateUrl: './object-format-edit.component.html',
-  styleUrls: ['./object-format-edit.component.css']
+  selector: 'field-edit-list',
+  templateUrl: './field-edit-list.component.html',
+  styleUrls: ['./field-edit-list.component.css']
 })
-export class ObjectFormatEditComponent implements OnInit {
+export class FieldEditListComponent implements OnInit {
   @Input('group')
-  objectFormatForm: FormGroup;
+  fieldsForm: FormGroup;
 
   constructor() { }
 

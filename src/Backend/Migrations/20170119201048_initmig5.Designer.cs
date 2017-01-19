@@ -8,14 +8,35 @@ using Backend.Models.EntityModels;
 namespace Backend.Migrations
 {
     [DbContext(typeof(GTiHubContext))]
-    [Migration("20170119050911_initmig")]
-    partial class initmig
+    [Migration("20170119201048_initmig5")]
+    partial class initmig5
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Backend.Models.EntityModels.ApiInfo", b =>
+                {
+                    b.Property<int>("ApiInfoId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ObjectFormatId");
+
+                    b.Property<int?>("ObjectTargetId");
+
+                    b.Property<string>("SourceURL");
+
+                    b.HasKey("ApiInfoId");
+
+                    b.HasIndex("ObjectFormatId");
+
+                    b.HasIndex("ObjectTargetId");
+
+                    b.ToTable("ApiInfo");
+                });
 
             modelBuilder.Entity("Backend.Models.EntityModels.ApplicationUser", b =>
                 {
@@ -212,11 +233,36 @@ namespace Backend.Migrations
 
                     b.Property<string>("Datatype");
 
+                    b.Property<int>("Length");
+
                     b.Property<string>("Name");
 
                     b.HasKey("FieldId");
 
                     b.ToTable("Fields");
+                });
+
+            modelBuilder.Entity("Backend.Models.EntityModels.FileInfo", b =>
+                {
+                    b.Property<int>("FileSourceInfoId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ObjectFormatId");
+
+                    b.Property<int>("ObjectTargetId");
+
+                    b.Property<string>("SourceFileName");
+
+                    b.Property<string>("SourceFileType");
+
+                    b.HasKey("FileSourceInfoId");
+
+                    b.HasIndex("ObjectFormatId");
+
+                    b.HasIndex("ObjectTargetId");
+
+                    b.ToTable("FileInfo");
                 });
 
             modelBuilder.Entity("Backend.Models.EntityModels.Map", b =>
@@ -306,8 +352,6 @@ namespace Backend.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("UserFormatFileName");
-
                     b.HasKey("ObjectFormatId");
 
                     b.HasIndex("DataObjectId");
@@ -336,15 +380,17 @@ namespace Backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("CheckTypes");
+
                     b.Property<int?>("DataObjectId");
 
-                    b.Property<bool>("FileOutput");
+                    b.Property<string>("Description");
 
-                    b.Property<string>("OutputName");
+                    b.Property<bool>("EvalConditions");
 
-                    b.Property<string>("OutputType");
+                    b.Property<string>("Name");
 
-                    b.Property<string>("OutputURL");
+                    b.Property<bool>("StopOnError");
 
                     b.HasKey("ObjectTargetId");
 
@@ -703,6 +749,18 @@ namespace Backend.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Backend.Models.EntityModels.ApiInfo", b =>
+                {
+                    b.HasOne("Backend.Models.EntityModels.ObjectFormat", "ObjectFormat")
+                        .WithMany("ApiInfos")
+                        .HasForeignKey("ObjectFormatId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Backend.Models.EntityModels.ObjectTarget")
+                        .WithMany("ApiInfos")
+                        .HasForeignKey("ObjectTargetId");
+                });
+
             modelBuilder.Entity("Backend.Models.EntityModels.ApplicationUser", b =>
                 {
                     b.HasOne("Backend.Models.EntityModels.Client")
@@ -720,6 +778,19 @@ namespace Backend.Migrations
                     b.HasOne("Backend.Models.EntityModels.Transformation", "Transformation")
                         .WithMany("Conditions")
                         .HasForeignKey("TransformationId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Backend.Models.EntityModels.FileInfo", b =>
+                {
+                    b.HasOne("Backend.Models.EntityModels.ObjectFormat", "ObjectFormat")
+                        .WithMany("FileInfos")
+                        .HasForeignKey("ObjectFormatId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Backend.Models.EntityModels.ObjectTarget", "ObjectTarget")
+                        .WithMany("FileInfos")
+                        .HasForeignKey("ObjectTargetId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
