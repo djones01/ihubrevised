@@ -73,7 +73,7 @@ namespace Backend
             // Add the TransformHelpers service
             //services.TryAddTransient<IProjectHelpers, ProjectHelpers>();
             //services.TryAddTransient<ITransformHelpers, TransformHelpers>();
-            //services.TryAddTransient<IFileHelpers, FileHelpers>();
+            services.TryAddTransient<IExtractHelpers, ExtractHelpers>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 

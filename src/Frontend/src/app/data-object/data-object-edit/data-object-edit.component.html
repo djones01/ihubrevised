@@ -30,39 +30,36 @@
                 </div>
           </div>
       </div>
-      <hr>
-        <p-panel header="Data Formats" [toggleable]="true"> 
-            <div formArrayName="objectFormats">
-                <div class="form-group">
-                    <button type="button" class="btn btn-secondary" (click)="addDataObjectFormat()"><span class="fa fa-plus"></span> Add Data Format</button>
+    <p-panel header="Data Formats" [toggleable]="true" styleClass="add-margin-bottom"> 
+        <div formArrayName="objectFormats">
+            <div class="form-group">
+                <button type="button" class="btn btn-secondary" (click)="addDataObjectFormat()"><span class="fa fa-plus"></span> Add Data Format</button>
+            </div>
+            <div class="card form-group" *ngFor="let objectFormat of dataObjectForm.controls.objectFormats.controls; let i=index">
+                <div class="card-header">                               
+                    <span class="fa fa-close pull-right" (click)="removeObjectFormat(i)"></span>
                 </div>
-                <div class="card form-group" *ngFor="let objectFormat of dataObjectForm.controls.objectFormats.controls; let i=index">
-                    <div class="card-header">                               
-                        <span class="fa fa-close pull-right" (click)="removeObjectFormat(i)"></span>
-                    </div>
-                    <div class="card-block">
-                        <object-format-edit [group]="dataObjectForm.controls.objectFormats.controls[i]"></object-format-edit>
-                    </div>
-                </div>    
-            </div>                 
-        </p-panel>
-      <hr>
-        <p-panel header="Data Targets" [toggleable]="true">
-            <div formArrayName="objectTargets">
-             <div class="form-group">
-                    <button type="button" class="btn btn-secondary" (click)="addDataObjectTarget()"><span class="fa fa-plus"></span> Add Data Target</button>
-                </div>              
-                <div class="card form-group" *ngFor="let objectTarget of dataObjectForm.controls.objectTargets.controls; let i=index">
-                    <div class="card-header" >                               
-                        <span class="fa fa-close pull-right" (click)="removeObjectTarget(i)"></span>
-                    </div>
-                    <div class="card-block">
-                        <object-target-edit [group]="dataObjectForm.controls.objectTargets.controls[i]"></object-target-edit>
-                    </div>
+                <div class="card-block">
+                    <object-format-edit [group]="dataObjectForm.controls.objectFormats.controls[i]"></object-format-edit>
                 </div>
-            </div>        
-        </p-panel>
-      <hr>
+            </div>    
+        </div>                 
+    </p-panel>
+    <p-panel header="Data Targets" [toggleable]="true" styleClass="add-margin-bottom">
+        <div formArrayName="objectTargets">
+            <div class="form-group">
+                <button type="button" class="btn btn-secondary" (click)="addDataObjectTarget()"><span class="fa fa-plus"></span> Add Data Target</button>
+            </div>              
+            <div class="card form-group" *ngFor="let objectTarget of dataObjectForm.controls.objectTargets.controls; let i=index">
+                <div class="card-header" >                               
+                    <span class="fa fa-close pull-right" (click)="removeObjectTarget(i)"></span>
+                </div>
+                <div class="card-block">
+                    <object-target-edit [group]="dataObjectForm.controls.objectTargets.controls[i]"></object-target-edit>
+                </div>
+            </div>
+        </div>        
+    </p-panel>
       <button type="button" class="btn btn-default" (click)="newDataObject()"><span class="fa fa-eraser"></span> Clear</button>
       <button type="submit" class="btn btn-primary" [disabled]="!dataObjectForm.valid">Submit</button>
     </form> 

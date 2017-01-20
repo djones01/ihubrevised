@@ -13,5 +13,6 @@ namespace Backend.Models.EntityModels
         public int ObjectTargetId { get; set; }
         public Map Map { get; set; }
         public int MapId { get; set; }
+        public int SeqNum { get; set; }
     }
 }

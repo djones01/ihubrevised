@@ -31,3 +31,7 @@
     max-width: 3em;
 }
 
+.form-inline > * {
+    margin: 5px 10px !important;
+}
+

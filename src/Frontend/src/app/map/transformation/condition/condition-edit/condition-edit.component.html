@@ -1,0 +1,63 @@
+<form [formGroup]="conditionForm" class="form-inline">
+    <select class="form-control" [disabled]="conditionForm.get('seqNum').value != 1 || conditionForm.get('leftField').invalid" formControlName="chain_Operation">
+        <option value="||">Or</option>
+        <option value="&&">And</option>
+    </select>
+
+
+    <select class="form-control" formControlName="left_Paren">
+        <option value=""></option>
+        <option value="(">(</option>
+    </select>
+
+    <small [hidden]="conditionForm.get('leftField').valid" class="text-danger">
+        Source Field is required
+    </small>
+
+    <div class="form-group">
+        <select [ngClass]="{'has-danger': conditionForm.get('cond_Value').invalid}" class="form-control" formControlName="operation">
+            <option value="" disabled selected>Select Operation</option>
+            <option [hidden]="conditionForm.get('leftField').value.datatype != 'num' && conditionForm.get('leftField').value.datatype != 'currency' && conditionForm.get('leftField').value.datatype != 'date'"
+                    *ngFor="let option of dateNumOpts" [value]="option.value">
+                {{option.display}}
+            </option>
+            <option [hidden]="conditionForm.get('leftField').value.datatype != 'text' && conditionForm.get('leftField').value.datatype != 'url' && conditionForm.get('leftField').value.datatype != 'email'"
+                    *ngFor="let option of textOpts" [value]="option.value">
+                {{option.display}}
+            </option>
+            <option [hidden]="conditionForm.get('leftField').value.datatype != 'bool'" *ngFor="let option of boolOpts" [value]="option.value">
+                {{option.display}}
+            </option>
+        </select>
+    </div>
+          
+    <!-- Display for non field-field compare -->
+    <div *ngIf="conditionForm.controls.fieldToFieldCompare.value == false" class="form-group">
+        <input *ngIf="conditionForm.get('leftField').value.datatype == 'text' 
+        || conditionForm.get('leftField').value.datatype == 'url' || conditionForm.get('leftField').value.datatype == 'email'"
+                class="form-control" type="text" formControlName="cond_Value" />
+        <input *ngIf="conditionForm.get('leftField').value.datatype == 'num' 
+        || conditionForm.get('leftField').value.datatype == 'currency'"
+                class="form-control" type="number" step="any" formControlName="cond_Value" />
+        <input *ngIf="conditionForm.get('leftField').value.datatype == 'date'" 
+        type="date" class="form-control" formControlName="cond_Value" />
+        <select *ngIf="conditionForm.get('leftField').value.datatype == 'bool'" 
+        class="form-control" formControlName="cond_Value">
+            <option value="" disabled selected>Select T/F</option>
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+    </div>
+
+    <!-- Display for field-field compare -->
+    <div *ngIf="conditionForm.get('fieldToFieldCompare').value == false"> 
+
+    </div>
+
+    <select class="form-control" formControlName="right_Paren">
+        <option value=""></option>
+        <option value=")">)</option>
+    </select> 
+</form>
+                        
+
