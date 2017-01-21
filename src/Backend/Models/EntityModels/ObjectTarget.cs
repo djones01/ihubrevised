@@ -23,7 +23,43 @@ namespace Backend.Models.EntityModels
         public bool CheckTypes { get; set; }
         public bool EvalConditions { get; set; }
         public bool StopOnError { get; set; }
-        
-        public ICollection<Map> ObjectFormatFields { get; set; }
+
+        public int NumSourceFiles
+        {
+            get
+            {
+                return this.FileInfos.Count;
+            }
+            set
+            {
+                NumSourceFiles = this.FileInfos.Count;
+            }
+        }
+
+        public int NumSourceApis
+        {
+            get
+            {
+                return this.ApiInfos.Count;
+            }
+            set
+            {
+                NumSourceFiles = this.ApiInfos.Count;
+            }
+        }
+
+        public int TotalSourceCount
+        {
+            get
+            {
+                return NumSourceFiles + NumSourceApis;
+            }
+            set
+            {
+                TotalSourceCount = NumSourceApis + NumSourceFiles;
+            }
+        }
+
+        public ICollection<MapObjectTarget> MapObjectTargets { get; set; }
     }
 }

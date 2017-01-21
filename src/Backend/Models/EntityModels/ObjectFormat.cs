@@ -20,6 +20,53 @@ namespace Backend.Models.EntityModels
         
         public bool FromBatchFiles { get; set; }
 
+        public int FieldCount {
+            get
+            {
+                return this.ObjectFormatFields.Count;
+            }
+            set
+            {
+                FieldCount = this.ObjectFormatFields.Count;
+            }  
+        }
+
+        public int NumSourceFiles
+        {
+            get
+            {
+                return this.FileInfos.Count;
+            }
+            set
+            {
+                NumSourceFiles = this.FileInfos.Count;
+            }
+        }
+
+        public int NumSourceApis
+        {
+            get
+            {
+                return this.ApiInfos.Count;
+            }
+            set
+            {
+                NumSourceFiles = this.ApiInfos.Count;
+            }
+        }
+
+        public int TotalSourceCount
+        {
+            get
+            {
+                return NumSourceFiles + NumSourceApis;
+            }
+            set
+            {
+                TotalSourceCount = NumSourceApis + NumSourceFiles;
+            }
+        }
+
         public ICollection<ObjectFormatField> ObjectFormatFields { get; set; }
         public ICollection<MapObjectFormat> MapObjectFormats { get; set; }
     }

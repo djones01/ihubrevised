@@ -1,0 +1,9 @@
+<form [formGroup]="ruleFieldForm" class="form-inline">    
+    <p-inputSwitch onLabel="Trim" offLabel="No Trim" formControlName="trim"></p-inputSwitch>
+    <input type="text" class="form-control" placeholder="Prepend Value" formControlName="prepend" />
+    <small [hidden]="ruleFieldForm.controls.field.valid" class="text-danger">
+         Field is required
+    </small>
+    <input type="text" class="form-control" placeholder="Append Value" formControlName="append" />
+    <field-format *ngIf="ruleFieldForm.controls.field.value != null" [fieldDataType]="ruleFieldForm.controls.field.value.datatype"></field-format>
+</form>

@@ -13,6 +13,7 @@ export const routes: Routes = [
         { path: 'user', loadChildren: 'app/user/user.module#UserModule' },
         { path: 'client', loadChildren: 'app/client/client.module#ClientModule' },
         { path: 'data-object', loadChildren: 'app/data-object/data-object.module#DataObjectModule' },
+        { path: 'map', loadChildren: 'app/map/map.module#MapModule' },
         { path: 'about', component: AboutComponent }
     ]}   
 ];

@@ -20,7 +20,8 @@
         public string Description { get; set; }
         public bool MapType { get; set; }
 
-        public ICollection<MapObjectFormat> ObjectFormat { get; set; }
+        public ICollection<MapObjectFormat> MapObjectFormats { get; set; }
+        public ICollection<MapObjectTarget> MapObjectTargets { get; set; }
         public  ICollection<ProjectMap> ProjectMaps { get; set; }
         public  ICollection<Transformation> Transformations { get; set; }
     }

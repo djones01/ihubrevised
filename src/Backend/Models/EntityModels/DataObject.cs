@@ -15,7 +15,7 @@ namespace Backend.Models.EntityModels
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public ICollection<ObjectFormat> ObjectFormats { get; set; }
-        public ICollection<ObjectTarget> ObjectTargets { get; set; }
+        public ICollection<DataObjectFormat> DataObjectFormats { get; set; }
+        public ICollection<DataObjectTarget> DataObjectTargets { get; set; }
     }
 }

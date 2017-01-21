@@ -1,0 +1,48 @@
+<div class="input-group">
+    <span class="input-group-btn">
+        <button class="btn btn-default" type="button" (click)="toggleDialog()"><span class="fa fa-search"></span></button>
+    </span>
+    <label *ngIf="selectedNestedField != null" class="form-control hide-overflow">{{ selectedNestedField.name }}</label>
+    <label *ngIf="selectedNestedField == null" class="form-control hide-overflow">Select Item</label>
+</div>
+
+<p-dialog header="Select an Item" [modal]="true" responsive="true" width="800" [(visible)]="showDialog" [closable]="false">
+    <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+      <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+      <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+    </div>
+    <p-dataTable [globalFilter]="gb" [value]="sources" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5,10,20]" expandableRows="true" 
+                 [resizableColumns]="true" [responsive]="true"
+                 [stacked]="stacked"
+                 (onRowExpand)="rowExpanded($event)">
+        <header>
+            <div style="text-align:left">
+                <p-multiSelect [options]="parentColumnOptions" [(ngModel)]="parentCols"></p-multiSelect>
+            </div>
+        </header>
+        <p-column expander="true" styleClass="col-icon"></p-column>
+        <p-column *ngFor="let parentCol of parentCols" [field]="parentCol.field" [header]="parentCol.header" [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+        <template let-expandedParent pTemplate="rowexpansion">
+            <div class="ui-grid ui-grid-responsive ui-fluid" style="padding:20px">
+                <div class="ui-grid-row">            
+                    <p-dataTable [value]="expandedParent.children" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5,10,20]" 
+                                [resizableColumns]="true" [responsive]="true"
+                                [stacked]="stacked" [(selection)]="selectedChild"
+                                (onRowExpand)="rowExpanded($event)">
+                        <header>
+                            <div style="text-align:left">
+                                <p-multiSelect [options]="childColumnOptions" [(ngModel)]="childCols"></p-multiSelect>
+                            </div>
+                        </header>
+                        <p-column [style]="{'width':'38px'}" selectionMode="single"></p-column>
+                        <p-column *ngFor="let childCol of childCols" [field]="childCol.field" [header]="childCol.header" [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+                    </p-dataTable>
+                </div>
+            </div>
+        </template>
+    </p-dataTable>
+    <hr>
+    <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+    <button type="button" class="btn btn-primary" [disabled]="selectedChild == null" (click)="toggleDialog()">Select</button>
+</p-dialog>
+

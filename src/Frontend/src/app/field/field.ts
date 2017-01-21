@@ -2,8 +2,8 @@ export interface Field {
     fieldId?: number;
     name: string;
     datatype: string;
-    length: string;
-    active: string;
+    length: number;
+    active: boolean;
     created_By?: string;
     creation_Date?: Date;
     modified_By?: string;
@@ -14,8 +14,8 @@ export class Field implements Field {
     constructor(
         public name: string,
         public datatype: string,
-        public length: string,
-        public active: string
+        public length: number,
+        public active: boolean
         ) {}
     
     public static isEquivalent(a: Field, b: Field){
