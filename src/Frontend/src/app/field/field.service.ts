@@ -24,6 +24,14 @@ export class FieldService {
             }, error => console.log(error), () => { });
     }
 
+    checkIfFieldExists(field: Field)
+    {
+        this.dataStore.fields.forEach((f, i) => function(){
+            if(Field.isEquivalent(field, f))
+                return true;
+        });
+    }
+
     setEditField(edit: Field) {
         this._editField.next(edit);
     }

@@ -1,0 +1,12 @@
+<button type="button" class="btn btn-default" (click)="toggleDialog()">Edit Fields</button>
+
+<p-dialog header="Select and Create Fields" [modal]="true" responsive="true" width="1000" [(visible)]="showDialog" [closable]="true">
+    <p-tabView>
+        <p-tabPanel header="Add New Fields">
+
+        </p-tabPanel>
+        <p-tabPanel header="Select Existing Fields">
+            <field-select-existing></field-select-existing>
+        </p-tabPanel>
+    </p-tabView>
+</p-dialog>

@@ -10,7 +10,7 @@
         <label>File Type</label>
         <select class="form-control" formControlName="fileType">
             <option value="" disabled selected>Select File Type</option>
-            <option *ngFor="let fileType of fileTypeOptions" [ngValue]="fileType.value">{{fileType.display}}</option>
+            <option *ngFor="let fileType of fileTypeOptions" [ngValue]="fileType.value">{{fileType.label}}</option>
         </select>
         <small *ngIf="!fileInfoForm.controls.fileType.valid" class="text-danger">
             File Type is required
@@ -31,7 +31,7 @@
                 <div class="input-group-btn">
                     <select class="form-control" formControlName="fileSizeLimitUnits">
                         <option value="0" disabled selected>Units</option>
-                        <option *ngFor="let units of unitOptions" [ngValue]="units.value">{{units.display}}</option>
+                        <option *ngFor="let units of unitOptions" [ngValue]="units.value">{{units.label}}</option>
                     </select>
                 </div>
             </div>

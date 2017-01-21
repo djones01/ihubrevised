@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { FieldListComponent } from './field-list.component';
+import { DataFileSelectComponent } from './data-file-select.component';
 
-describe('FieldListComponent', () => {
-  let component: FieldListComponent;
-  let fixture: ComponentFixture<FieldListComponent>;
+describe('DataFileSelectComponent', () => {
+  let component: DataFileSelectComponent;
+  let fixture: ComponentFixture<DataFileSelectComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FieldListComponent ]
+      declarations: [ DataFileSelectComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FieldListComponent);
+    fixture = TestBed.createComponent(DataFileSelectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

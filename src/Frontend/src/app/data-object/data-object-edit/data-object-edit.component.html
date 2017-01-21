@@ -5,17 +5,17 @@
       <div class="row">
           <div class="col-md-6">
               <div class="form-group">
-                  <label>Name</label>
+                  <label>Object Name</label>
                   <input type="text" class="form-control" formControlName="name">
                   <small *ngIf="!dataObjectForm.controls.name.valid" class="text-danger">
-                      Name is required
+                      Object Name is required
                   </small>
               </div>
               <div class="form-group">
-                  <label>Description</label>
+                  <label>Object Description</label>
                   <textarea class="form-control textarea-resize" formControlName="description"></textarea>
                   <small *ngIf="!dataObjectForm.controls.description.valid" class="text-danger">
-                      Description is required
+                      Object Description is required
                   </small>
               </div>
               <div class="form-group">

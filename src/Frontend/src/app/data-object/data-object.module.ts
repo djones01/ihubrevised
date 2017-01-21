@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DataObjectRoutingModule } from './data-object-routing.module';
 
 import { ObjectInfoModule } from '../object-info/object-info.module';
+import { FieldModule } from '../field/field.module';
 
 // components
 import { DataObjectEditComponent } from './data-object-edit/data-object-edit.component';
@@ -41,8 +42,16 @@ import {
     PanelModule,
     CalendarModule,
     InputSwitchModule,
-    ObjectInfoModule
+    ObjectInfoModule,
+    FieldModule
   ],
-  declarations: [DataObjectEditComponent, DataObjectListComponent, ObjectFormatEditComponent, ObjectFormatListComponent, ObjectTargetEditComponent, ObjectTargetListComponent]
+  declarations: [
+    DataObjectEditComponent, 
+    DataObjectListComponent, 
+    ObjectFormatEditComponent, 
+    ObjectFormatListComponent, 
+    ObjectTargetEditComponent, 
+    ObjectTargetListComponent
+    ]
 })
 export class DataObjectModule { }

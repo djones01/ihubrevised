@@ -20,10 +20,14 @@ namespace Backend.Models.EntityModels
         public int FileSizeLimit { get; set; }
         public string FileSizeLimitUnits { get; set; }
         public int RowLimit { get; set; }
-
+        public bool BatchProcessLines { get; set; }
+        public char Delimiter { get; set; }
+        public int StartRow { get; set; }
+        public bool FixedLength { get; set; }
+        public int Length { get; set; }
+        
         public int ObjectFormatId { get; set; }
         public ObjectFormat ObjectFormat { get; set; }
-
         public int ObjectTargetId { get; set; }
         public ObjectTarget ObjectTarget { get; set; }
     }

@@ -18,10 +18,7 @@ namespace Backend.Models.EntityModels
         public ICollection<ApiInfo> ApiInfos { get; set; }
         public ICollection<FileInfo> FileInfos { get; set; }    
         
-        public bool FromBatch { get; set; }
-        public bool AutoProcessed { get; set; }
-        public bool FixedLength { get; set; }
-        public int Length { get; set; }
+        public bool FromBatchFiles { get; set; }
 
         public ICollection<ObjectFormatField> ObjectFormatFields { get; set; }
         public ICollection<MapObjectFormat> MapObjectFormats { get; set; }

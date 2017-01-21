@@ -33,7 +33,12 @@ export class ObjectTargetEditComponent implements OnInit {
             compressFile: [false],
             rowLimit: [0],
             fileSizeLimit: [0],
-            fileSizeLimitUnits: ['mb']
+            fileSizeLimitUnits: ['mb'],
+            batchProcessLines: [false],
+            delimiter: ['', Validators.required],
+            startRow: [1, Validators.required],
+            fixedLength: [false],
+            length: [null]
         });
   }
 

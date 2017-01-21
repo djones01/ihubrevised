@@ -21,6 +21,8 @@ export class DataObjectEditComponent implements OnInit {
             description: ['', Validators.required],
             effective_Date: [new Date()],
             active: [true],
+            existingObjectFormats: [[]],
+            existingObjectTargets: [[]],
             objectFormats: this._fb.array([]),
             objectTargets: this._fb.array([])
         });
@@ -33,11 +35,8 @@ export class DataObjectEditComponent implements OnInit {
             effective_Date: [new Date()],
             active: [true],
             sourceGroup: this._fb.group({
-                fromBatch: [false],
-                autoProcessed: [false],
-                fixedLength: [false],
-                length: [null],
-                fields: this._fb.array([]),
+                existingFields: [[]],
+                newFields: this._fb.array([]),
                 apiInfos: this._fb.array([]),
                 fileInfos: this._fb.array([])
             })    

@@ -4,17 +4,18 @@ import { FormsModule } from '@angular/forms';
 
 
 // third party modules
-import { PanelModule, FileUploadModule } from 'primeng/primeng';
-import { DataFileSelectComponentComponent } from './data-file-select-component/data-file-select-component.component';
+import { PanelModule, FileUploadModule, InputSwitchModule } from 'primeng/primeng';
+import { DataFileSelectComponent } from './data-file-select/data-file-select.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     PanelModule,
-    FileUploadModule
+    FileUploadModule,
+    InputSwitchModule
   ],
-  declarations: [DataFileSelectComponentComponent],
-  exports: []
+  declarations: [DataFileSelectComponent],
+  exports: [DataFileSelectComponent]
 })
 export class FileHandlingModule { }

@@ -7,18 +7,13 @@ unitOptions: any;
 
   constructor(){
       this.fileTypeOptions = [
-        { value: "url", display: "URL" },
-        { value: "text", display: "Text" },
-        { value: "date", display: "Date" },
-        { value: "bool", display: "Boolean" },
-        { value: "num", display: "Number" },
-        { value: "currency", display: "Currency" },
-        { value: "email", display: "Email" }
+        { value: "txt", label: ".txt" },
+        { value: "dat", label: ".dat" },
+        { value: "csv", label: ".csv" }
     ];
-
-    this.unitOptions = [{ value: "b", display: "Bytes" },
-        { value: "kb", display: "KB" },
-        { value: "mb", display: "MB" },
-        { value: "gb", display: "GB" }];
+    this.unitOptions = [{ value: "b", label: "Bytes" },
+        { value: "kb", label: "KB" },
+        { value: "mb", label: "MB" },
+        { value: "gb", label: "GB" }];
     }
   }

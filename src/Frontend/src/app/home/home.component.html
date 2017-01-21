@@ -1,7 +1,7 @@
 <ng-sidebar-container>
     <ng-sidebar [(opened)]="opened" [closeOnClickOutside]="true" [mode]="'push'" [position]="'right'" [closeOnClickOutside]="true" [keyClose]="true" [keyClose]="true">
         <p-panelMenu [model]="menuItems"></p-panelMenu>
-        <button type="button" class="btn btn-default pull-right" style="width: 100%" (click)="toggleMainBar()">
+        <button type="button" class="btn btn-default" style="width: 100%" (click)="toggleMainBar()">
             <span class="fa fa-close"></span>
             Close
         </button>

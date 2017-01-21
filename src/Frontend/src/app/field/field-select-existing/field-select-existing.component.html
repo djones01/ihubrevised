@@ -1,0 +1,19 @@
+<p-dataTable [value]="fieldService.fields | async" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5,10,20]" 
+                        [resizableColumns]="true" [responsive]="true"
+                        [stacked]="stacked" [(selection)]="selectedFields" [globalFilter]="gb" #dt>
+    <p-column [style]="{'width':'38px'}" selectionMode="multiple" *ngIf="!selectSingle"></p-column>
+    <p-column [style]="{'width':'38px'}" selectionMode="single" *ngIf="selectSingle"></p-column>
+    <p-column *ngFor="let fieldCol of fieldCols" [field]="fieldCol.field" [header]="fieldCol.header" [sortable]="true"></p-column>
+    <p-column field="name" header="Name" [filter]="true" filterPlaceholder="Search"></p-column>
+    <p-column field="length" header="Length" [filter]="true" filterPlaceholder="Search"></p-column>
+    <p-column field="datatype" header="Data Type" [filter]="true" [style]="{'overflow':'visible'}" filterMatchMode="equals">
+        <template pTemplate="filter" let-col>
+            <p-dropdown [options]="datatypes" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-dropdown>
+        </template>
+    </p-column>
+    <p-column field="active" header="Active" [filter]="true" filterMatchMode="equals" [style]="{'overflow':'visible'}">
+        <template pTemplate="filter" let-col>
+            <p-inputSwitch onLabel="Yes" offLabel="No" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-inputSwitch>
+        </template>
+    </p-column>
+</p-dataTable>
