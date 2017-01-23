@@ -69,5 +69,7 @@ namespace Backend.Models.EntityModels
 
         public ICollection<ObjectFormatField> ObjectFormatFields { get; set; }
         public ICollection<MapObjectFormat> MapObjectFormats { get; set; }
+
+        public ICollection<DataObjectFormat> DataObjectFormats { get; set; }
     }
 }

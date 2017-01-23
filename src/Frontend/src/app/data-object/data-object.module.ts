@@ -27,6 +27,17 @@ import {
   CalendarModule,
   InputSwitchModule } from 'primeng/primeng';
 
+// services
+import { DataObjectService } from './services/data-object.service';
+import { ObjectFormatService } from './services/object-format.service';
+import { ObjectTargetService } from './services/object-target.service';
+import { DataObjectBuilderService } from './services/data-object-builder.service';
+
+// services
+export { DataObjectService } from './services/data-object.service';
+export { ObjectFormatService } from './services/object-format.service';
+export { ObjectTargetService } from './services/object-target.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -52,6 +63,7 @@ import {
     ObjectFormatListComponent, 
     ObjectTargetEditComponent, 
     ObjectTargetListComponent
-    ]
+    ],
+  providers: [DataObjectService, ObjectFormatService, ObjectTargetService, DataObjectBuilderService]
 })
 export class DataObjectModule { }

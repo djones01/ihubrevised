@@ -13,18 +13,17 @@
     <rule-edit [group]="transForm.controls.rule" [i]="i" class="add-margin-bottom"></rule-edit>
     <div formArrayName="conditions" class="add-margin-bottom">
         <p-panel header="Conditions" [toggleable]="true">
-            <button type="button" class="btn btn-default  add-margin-bottom" (click)="addCondition()"><span class="fa fa-plus"></span> Add Condition</button>
+            <button type="button" class="btn btn-secondary  add-margin-bottom" (click)="addCondition()"><span class="fa fa-plus"></span> Add Condition</button>
             <div *ngFor="let condition of transForm.controls.conditions.controls; let i=index">
                 <div class="row">
                     <div class="col-md-11">
                         <condition-edit [group]="transForm.controls.conditions.controls[i]"></condition-edit>
                     </div>
                     <div class="col-md-1">
-                        <button type="button" class="btn btn-default" (click)="removeCondition(i)"><span class="fa fa-trash-o"></span></button>
+                        <button type="button" class="btn btn-secondary" (click)="removeCondition(i)"><span class="fa fa-close"></span></button>
                     </div>          
                 </div>                        
             </div>  
         </p-panel>
     </div>
-    
 </div>

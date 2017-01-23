@@ -15,23 +15,6 @@
           "lib/netstandard1.3/AspNet.Security.OAuth.Validation.dll": {}
         }
       },
-      "AutoMapper/5.1.1": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.CSharp": "4.0.1",
-          "NETStandard.Library": "1.6.0",
-          "System.Collections.Specialized": "4.0.1",
-          "System.ComponentModel.TypeConverter": "4.1.0",
-          "System.Dynamic.Runtime": "4.0.11",
-          "System.Linq.Queryable": "4.0.1"
-        },
-        "compile": {
-          "lib/netstandard1.3/AutoMapper.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/AutoMapper.dll": {}
-        }
-      },
       "CoreCLR-NCalc/2.1.2": {
         "type": "package",
         "dependencies": {
@@ -43,114 +26,6 @@
         },
         "runtime": {
           "lib/netstandard1.3/NCalc.dll": {}
-        }
-      },
-      "IdentityModel/2.1.1": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "9.0.1",
-          "System.Net.Http": "4.1.0",
-          "System.Security.Claims": "4.0.1",
-          "System.Security.Cryptography.Algorithms": "4.2.0",
-          "System.Security.Cryptography.X509Certificates": "4.1.0"
-        },
-        "compile": {
-          "lib/netstandard1.3/IdentityModel.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/IdentityModel.dll": {}
-        }
-      },
-      "IdentityModel.AspNetCore.OAuth2Introspection/2.0.0": {
-        "type": "package",
-        "dependencies": {
-          "IdentityModel": "2.1.1",
-          "Microsoft.AspNetCore.Authentication": "1.0.0",
-          "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
-          "Microsoft.Extensions.Caching.Memory": "1.0.0"
-        },
-        "compile": {
-          "lib/netstandard1.3/IdentityModel.AspNetCore.OAuth2Introspection.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/IdentityModel.AspNetCore.OAuth2Introspection.dll": {}
-        }
-      },
-      "IdentityModel.AspNetCore.ScopeValidation/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "1.0.0"
-        },
-        "compile": {
-          "lib/netstandard1.3/IdentityModel.AspNetCore.ScopeValidation.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/IdentityModel.AspNetCore.ScopeValidation.dll": {}
-        }
-      },
-      "IdentityServer4/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "IdentityModel": "2.1.1",
-          "Microsoft.AspNetCore.Authentication.Cookies": "1.1.0",
-          "Microsoft.AspNetCore.Cors": "1.1.0",
-          "Microsoft.AspNetCore.Http.Abstractions": "1.1.0",
-          "Microsoft.Extensions.Caching.Abstractions": "1.1.0",
-          "Microsoft.Extensions.Caching.Memory": "1.1.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.1.0",
-          "Microsoft.Extensions.Options.ConfigurationExtensions": "1.1.0",
-          "System.Collections.Specialized": "4.3.0",
-          "System.Diagnostics.Process": "4.3.0",
-          "System.IdentityModel.Tokens.Jwt": "5.1.0"
-        },
-        "compile": {
-          "lib/netstandard1.4/IdentityServer4.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.4/IdentityServer4.dll": {}
-        }
-      },
-      "IdentityServer4.AccessTokenValidation/1.0.2": {
-        "type": "package",
-        "dependencies": {
-          "IdentityModel.AspNetCore.OAuth2Introspection": "2.0.0",
-          "IdentityModel.AspNetCore.ScopeValidation": "1.0.0",
-          "Microsoft.AspNetCore.Authentication.JwtBearer": "1.0.0"
-        },
-        "compile": {
-          "lib/netstandard1.4/IdentityServer4.AccessTokenValidation.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.4/IdentityServer4.AccessTokenValidation.dll": {}
-        }
-      },
-      "IdentityServer4.AspNetIdentity/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "IdentityServer4": "1.0.0",
-          "Microsoft.AspNetCore.Identity": "1.1.0"
-        },
-        "compile": {
-          "lib/netstandard1.4/IdentityServer4.AspNetIdentity.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.4/IdentityServer4.AspNetIdentity.dll": {}
-        }
-      },
-      "IdentityServer4.EntityFramework/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "AutoMapper": "5.1.1",
-          "IdentityServer4": "1.0.0",
-          "Microsoft.EntityFrameworkCore": "1.1.0",
-          "Microsoft.EntityFrameworkCore.Relational": "1.1.0"
-        },
-        "compile": {
-          "lib/netstandard1.4/IdentityServer4.EntityFramework.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.4/IdentityServer4.EntityFramework.dll": {}
         }
       },
       "Libuv/1.9.1": {
@@ -305,19 +180,6 @@
           "lib/netstandard1.3/Microsoft.AspNetCore.Authentication.Cookies.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Authentication.JwtBearer/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Authentication": "1.0.0",
-          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "2.0.0"
-        },
-        "compile": {
-          "lib/netstandard1.4/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.4/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {}
-        }
-      },
       "Microsoft.AspNetCore.Authorization/1.1.0": {
         "type": "package",
         "dependencies": {
@@ -440,6 +302,20 @@
         },
         "runtime": {
           "lib/netstandard1.0/Microsoft.AspNetCore.Diagnostics.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
+          "Microsoft.EntityFrameworkCore.Relational": "1.0.0",
+          "System.Threading": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {}
         }
       },
       "Microsoft.AspNetCore.Hosting/1.1.0": {
@@ -1426,20 +1302,6 @@
           "lib/netstandard1.0/Microsoft.Extensions.Configuration.Abstractions.dll": {}
         }
       },
-      "Microsoft.Extensions.Configuration.Binder/1.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration": "1.1.0",
-          "NETStandard.Library": "1.6.1",
-          "System.ComponentModel.TypeConverter": "4.3.0"
-        },
-        "compile": {
-          "lib/netstandard1.1/Microsoft.Extensions.Configuration.Binder.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.1/Microsoft.Extensions.Configuration.Binder.dll": {}
-        }
-      },
       "Microsoft.Extensions.Configuration.CommandLine/1.1.0": {
         "type": "package",
         "dependencies": {
@@ -1734,22 +1596,6 @@
           "lib/netstandard1.0/Microsoft.Extensions.Options.dll": {}
         }
       },
-      "Microsoft.Extensions.Options.ConfigurationExtensions/1.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "1.1.0",
-          "Microsoft.Extensions.Configuration.Binder": "1.1.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.1.0",
-          "Microsoft.Extensions.Options": "1.1.0",
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "lib/netstandard1.1/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.1/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {}
-        }
-      },
       "Microsoft.Extensions.PlatformAbstractions/1.1.0": {
         "type": "package",
         "dependencies": {
@@ -1789,75 +1635,6 @@
         },
         "runtime": {
           "lib/netstandard1.0/Microsoft.Extensions.WebEncoders.dll": {}
-        }
-      },
-      "Microsoft.IdentityModel.Logging/1.1.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Diagnostics.Tracing": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.IO": "4.3.0",
-          "System.IO.FileSystem": "4.3.0"
-        },
-        "compile": {
-          "lib/netstandard1.4/Microsoft.IdentityModel.Logging.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.4/Microsoft.IdentityModel.Logging.dll": {}
-        }
-      },
-      "Microsoft.IdentityModel.Protocols/2.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Collections.Specialized": "4.0.1",
-          "System.Diagnostics.Contracts": "4.0.1",
-          "System.IdentityModel.Tokens.Jwt": "5.0.0",
-          "System.Net.Http": "4.1.0"
-        },
-        "compile": {
-          "lib/netstandard1.4/Microsoft.IdentityModel.Protocols.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.4/Microsoft.IdentityModel.Protocols.dll": {}
-        }
-      },
-      "Microsoft.IdentityModel.Protocols.OpenIdConnect/2.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.IdentityModel.Protocols": "2.0.0",
-          "System.Dynamic.Runtime": "4.0.11"
-        },
-        "compile": {
-          "lib/netstandard1.4/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.4/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll": {}
-        }
-      },
-      "Microsoft.IdentityModel.Tokens/5.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.IdentityModel.Logging": "1.1.0",
-          "Newtonsoft.Json": "9.0.1",
-          "System.Collections": "4.3.0",
-          "System.Diagnostics.Tools": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Runtime.InteropServices": "4.3.0",
-          "System.Runtime.InteropServices.RuntimeInformation": "4.3.0",
-          "System.Security.Claims": "4.3.0",
-          "System.Security.Cryptography.Algorithms": "4.3.0",
-          "System.Security.Cryptography.Csp": "4.3.0",
-          "System.Security.Cryptography.X509Certificates": "4.3.0",
-          "System.Text.RegularExpressions": "4.3.0",
-          "System.Threading": "4.3.0",
-          "System.Xml.ReaderWriter": "4.3.0"
-        },
-        "compile": {
-          "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll": {}
         }
       },
       "Microsoft.Net.Http.Headers/1.1.0": {
@@ -2738,7 +2515,7 @@
           "System.Threading": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Collections.Specialized.dll": {}
+          "ref/netstandard1.3/_._": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.Specialized.dll": {}
@@ -2974,30 +2751,30 @@
           }
         }
       },
-      "System.Diagnostics.Process/4.3.0": {
+      "System.Diagnostics.Process/4.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
-          "Microsoft.Win32.Primitives": "4.3.0",
-          "Microsoft.Win32.Registry": "4.3.0",
-          "System.Collections": "4.3.0",
-          "System.Diagnostics.Debug": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.IO": "4.3.0",
-          "System.IO.FileSystem": "4.3.0",
-          "System.IO.FileSystem.Primitives": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Runtime.Handles": "4.3.0",
-          "System.Runtime.InteropServices": "4.3.0",
-          "System.Text.Encoding": "4.3.0",
-          "System.Text.Encoding.Extensions": "4.3.0",
-          "System.Threading": "4.3.0",
-          "System.Threading.Tasks": "4.3.0",
-          "System.Threading.Thread": "4.3.0",
-          "System.Threading.ThreadPool": "4.3.0",
-          "runtime.native.System": "4.3.0"
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.Win32.Primitives": "4.0.1",
+          "Microsoft.Win32.Registry": "4.0.0",
+          "System.Collections": "4.0.11",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Globalization": "4.0.11",
+          "System.IO": "4.1.0",
+          "System.IO.FileSystem": "4.0.1",
+          "System.IO.FileSystem.Primitives": "4.0.1",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Handles": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "System.Text.Encoding.Extensions": "4.0.11",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11",
+          "System.Threading.Thread": "4.0.0",
+          "System.Threading.ThreadPool": "4.0.10",
+          "runtime.native.System": "4.0.0"
         },
         "compile": {
           "ref/netstandard1.4/System.Diagnostics.Process.dll": {}
@@ -3133,18 +2910,6 @@
             "assetType": "runtime",
             "rid": "win"
           }
-        }
-      },
-      "System.IdentityModel.Tokens.Jwt/5.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.IdentityModel.Tokens": "5.1.0"
-        },
-        "compile": {
-          "lib/netstandard1.4/System.IdentityModel.Tokens.Jwt.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.4/System.IdentityModel.Tokens.Jwt.dll": {}
         }
       },
       "System.Interactive.Async/3.0.0": {
@@ -4144,7 +3909,7 @@
           "System.Threading": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Security.Cryptography.Csp.dll": {}
+          "ref/netstandard1.3/_._": {}
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.3/System.Security.Cryptography.Csp.dll": {
@@ -4682,23 +4447,6 @@
         "lib/netstandard1.3/AspNet.Security.OAuth.Validation.xml"
       ]
     },
-    "AutoMapper/5.1.1": {
-      "sha512": "Q3uFSWccBUE1Q9BW88C6RO2Y/iFkPztTKK1ciyx1jhWPdOi5+pvzZ2EwcJKPiV0cr2EXZUWqQOsSpA5jVjfQBg==",
-      "type": "package",
-      "path": "AutoMapper/5.1.1",
-      "files": [
-        "AutoMapper.5.1.1.nupkg.sha512",
-        "AutoMapper.nuspec",
-        "lib/net45/AutoMapper.dll",
-        "lib/net45/AutoMapper.xml",
-        "lib/netstandard1.1/AutoMapper.dll",
-        "lib/netstandard1.1/AutoMapper.xml",
-        "lib/netstandard1.3/AutoMapper.dll",
-        "lib/netstandard1.3/AutoMapper.xml",
-        "lib/portable-net45+win8+wpa81/AutoMapper.dll",
-        "lib/portable-net45+win8+wpa81/AutoMapper.xml"
-      ]
-    },
     "CoreCLR-NCalc/2.1.2": {
       "sha512": "ZakZv+z+jFFDjo7zWj/ynjDHo8A8GipmNghGUMhV8IyObSslZDePMYYgTIigpPS2j6OWPpbBcWQHu92/H9qF0A==",
       "type": "package",
@@ -4709,83 +4457,6 @@
         "NCalc.nuspec",
         "lib/net45/NCalc.dll",
         "lib/netstandard1.3/NCalc.dll"
-      ]
-    },
-    "IdentityModel/2.1.1": {
-      "sha512": "PnwsQt1oA6gLWcXlYff6idVFnzmw0I3nlg1VlsPgje7WPQfOPSZ5zrvc/W5NsJPoZFlOw8DI0OEbn20TnDkTOw==",
-      "type": "package",
-      "path": "IdentityModel/2.1.1",
-      "files": [
-        "IdentityModel.2.1.1.nupkg.sha512",
-        "IdentityModel.nuspec",
-        "lib/net45/IdentityModel.dll",
-        "lib/netstandard1.3/IdentityModel.dll"
-      ]
-    },
-    "IdentityModel.AspNetCore.OAuth2Introspection/2.0.0": {
-      "sha512": "bbDaL6hYbCuzarnVkH+Z8Eza4wgsI3jXVCURqBnq1rFvRn14Kwtvbqa7BfEH1E8m/usnJMOp1uUk/qCQmQobCA==",
-      "type": "package",
-      "path": "IdentityModel.AspNetCore.OAuth2Introspection/2.0.0",
-      "files": [
-        "IdentityModel.AspNetCore.OAuth2Introspection.2.0.0.nupkg.sha512",
-        "IdentityModel.AspNetCore.OAuth2Introspection.nuspec",
-        "lib/net452/IdentityModel.AspNetCore.OAuth2Introspection.dll",
-        "lib/netstandard1.3/IdentityModel.AspNetCore.OAuth2Introspection.dll"
-      ]
-    },
-    "IdentityModel.AspNetCore.ScopeValidation/1.0.0": {
-      "sha512": "xffIiCCBi9CqBWVmjUhFizxyZa7Tr2sVW84oR93HixBnjim8jpVhiPak3T+xQ9OGIE9m53SFnUx7zExOXGUVAg==",
-      "type": "package",
-      "path": "IdentityModel.AspNetCore.ScopeValidation/1.0.0",
-      "files": [
-        "IdentityModel.AspNetCore.ScopeValidation.1.0.0.nupkg.sha512",
-        "IdentityModel.AspNetCore.ScopeValidation.nuspec",
-        "lib/net452/IdentityModel.AspNetCore.ScopeValidation.dll",
-        "lib/netstandard1.3/IdentityModel.AspNetCore.ScopeValidation.dll"
-      ]
-    },
-    "IdentityServer4/1.0.0": {
-      "sha512": "4o/Xgj8qU7yz4mNZQdN6MnFQAb4LMThWXtklWM/gxN4CzBCDRB3dMgY5p4OkfnVJvJIICQZaXPryEJMckBKnew==",
-      "type": "package",
-      "path": "IdentityServer4/1.0.0",
-      "files": [
-        "identityserver4.1.0.0.nupkg.sha512",
-        "identityserver4.nuspec",
-        "lib/net452/IdentityServer4.dll",
-        "lib/netstandard1.4/IdentityServer4.dll"
-      ]
-    },
-    "IdentityServer4.AccessTokenValidation/1.0.2": {
-      "sha512": "thbX9+w8R+jlbG9zkUmSV1Tdw/hRosmeErq9tVzzzHIkG+W38g9mAdE2V4P7XQOMlwR/VvVo18i6HWmDwJQekw==",
-      "type": "package",
-      "path": "IdentityServer4.AccessTokenValidation/1.0.2",
-      "files": [
-        "identityserver4.accesstokenvalidation.1.0.2.nupkg.sha512",
-        "identityserver4.accesstokenvalidation.nuspec",
-        "lib/net452/IdentityServer4.AccessTokenValidation.dll",
-        "lib/netstandard1.4/IdentityServer4.AccessTokenValidation.dll"
-      ]
-    },
-    "IdentityServer4.AspNetIdentity/1.0.0": {
-      "sha512": "PUNRVJvGzmgWg2NjJUCuycAZbFpD8sxFOA6WyM+P1EL8npJ9xO/xuwKbKCNKUtCqK1RL3rC5uLz0TvezNfVovQ==",
-      "type": "package",
-      "path": "IdentityServer4.AspNetIdentity/1.0.0",
-      "files": [
-        "identityserver4.aspnetidentity.1.0.0.nupkg.sha512",
-        "identityserver4.aspnetidentity.nuspec",
-        "lib/net452/IdentityServer4.AspNetIdentity.dll",
-        "lib/netstandard1.4/IdentityServer4.AspNetIdentity.dll"
-      ]
-    },
-    "IdentityServer4.EntityFramework/1.0.0": {
-      "sha512": "c1zwQKGo4EH3G61SShMxVof3zL44+HGWphjyiPCe08oiZ7usxWy/g7iMhfeOKsmcud06adbAv88RlVzSjDa7+Q==",
-      "type": "package",
-      "path": "IdentityServer4.EntityFramework/1.0.0",
-      "files": [
-        "identityserver4.entityframework.1.0.0.nupkg.sha512",
-        "identityserver4.entityframework.nuspec",
-        "lib/net452/IdentityServer4.EntityFramework.dll",
-        "lib/netstandard1.4/IdentityServer4.EntityFramework.dll"
       ]
     },
     "Libuv/1.9.1": {
@@ -4889,19 +4560,6 @@
         "lib/netstandard1.3/Microsoft.AspNetCore.Authentication.Cookies.xml"
       ]
     },
-    "Microsoft.AspNetCore.Authentication.JwtBearer/1.0.0": {
-      "sha512": "CSZ24QCdMf5ItzaSA9wPe+UX3/JDRY8MQOQ/6gSYfZQ/3dfYXpdqA4Q+EG6ETdGXICWCwOSgG5hSLt7/SivRZg==",
-      "type": "package",
-      "path": "Microsoft.AspNetCore.Authentication.JwtBearer/1.0.0",
-      "files": [
-        "Microsoft.AspNetCore.Authentication.JwtBearer.1.0.0.nupkg.sha512",
-        "Microsoft.AspNetCore.Authentication.JwtBearer.nuspec",
-        "lib/net451/Microsoft.AspNetCore.Authentication.JwtBearer.dll",
-        "lib/net451/Microsoft.AspNetCore.Authentication.JwtBearer.xml",
-        "lib/netstandard1.4/Microsoft.AspNetCore.Authentication.JwtBearer.dll",
-        "lib/netstandard1.4/Microsoft.AspNetCore.Authentication.JwtBearer.xml"
-      ]
-    },
     "Microsoft.AspNetCore.Authorization/1.1.0": {
       "sha512": "dqveE6pqsnzkab2vw+aFExFYeCikF/T+GKZW9ki8dwJuN7M2+jJcgWtYAv83q7NjBARVh2xH8xf0ahzeuXL/WQ==",
       "type": "package",
@@ -5002,6 +4660,19 @@
         "Microsoft.AspNetCore.Diagnostics.Abstractions.nuspec",
         "lib/netstandard1.0/Microsoft.AspNetCore.Diagnostics.Abstractions.dll",
         "lib/netstandard1.0/Microsoft.AspNetCore.Diagnostics.Abstractions.xml"
+      ]
+    },
+    "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/1.0.0": {
+      "sha512": "2GE71Fc6RtjL3w+sydgaWMiGrZJfwbCcy+OZR2ax8jpzdO9E/BzXCRquMUrwP9VinTUk0NKe8b8r/6dAtg2uBA==",
+      "type": "package",
+      "path": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/1.0.0",
+      "files": [
+        "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.1.0.0.nupkg.sha512",
+        "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.nuspec",
+        "lib/net451/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll",
+        "lib/net451/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.xml",
+        "lib/netstandard1.3/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll",
+        "lib/netstandard1.3/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.xml"
       ]
     },
     "Microsoft.AspNetCore.Hosting/1.1.0": {
@@ -5826,17 +5497,6 @@
         "lib/netstandard1.0/Microsoft.Extensions.Configuration.Abstractions.xml"
       ]
     },
-    "Microsoft.Extensions.Configuration.Binder/1.1.0": {
-      "sha512": "1dTFEL493MfC5O7MNaElQBhX4txb9ivSmTMwB3qDqEJHXnnUdgThTChn32FjhLIA6Fn7YXjqkZzAB/LdZEKupw==",
-      "type": "package",
-      "path": "Microsoft.Extensions.Configuration.Binder/1.1.0",
-      "files": [
-        "Microsoft.Extensions.Configuration.Binder.1.1.0.nupkg.sha512",
-        "Microsoft.Extensions.Configuration.Binder.nuspec",
-        "lib/netstandard1.1/Microsoft.Extensions.Configuration.Binder.dll",
-        "lib/netstandard1.1/Microsoft.Extensions.Configuration.Binder.xml"
-      ]
-    },
     "Microsoft.Extensions.Configuration.CommandLine/1.1.0": {
       "sha512": "buL5gD1M4TZpr8/NB8QF47GwP83ra2KEPOP3oMD8/0Is9WQdzJGKLxziUJ4t+oAA3+b27UrQ4yAYtpSV5HT6Gw==",
       "type": "package",
@@ -6087,17 +5747,6 @@
         "lib/netstandard1.0/Microsoft.Extensions.Options.xml"
       ]
     },
-    "Microsoft.Extensions.Options.ConfigurationExtensions/1.1.0": {
-      "sha512": "loehh0znbtZw+mqk2VY7VyJu7t7N2TvEjSpln0Twkli/rF26HcxWQ3rdSvSr66yOCt7Dnur6DcW6HWXfa2u/PA==",
-      "type": "package",
-      "path": "Microsoft.Extensions.Options.ConfigurationExtensions/1.1.0",
-      "files": [
-        "lib/netstandard1.1/Microsoft.Extensions.Options.ConfigurationExtensions.dll",
-        "lib/netstandard1.1/Microsoft.Extensions.Options.ConfigurationExtensions.xml",
-        "microsoft.extensions.options.configurationextensions.1.1.0.nupkg.sha512",
-        "microsoft.extensions.options.configurationextensions.nuspec"
-      ]
-    },
     "Microsoft.Extensions.PlatformAbstractions/1.1.0": {
       "sha512": "H6ZsQzxYw/6k2DfEQRXdC+vQ6obd6Uba3uGJrnJ2vG4PRXjQZ7seB13JdCfE72abp8E6Fk3gGgDzfJiLZi5ZpQ==",
       "type": "package",
@@ -6131,56 +5780,6 @@
         "Microsoft.Extensions.WebEncoders.nuspec",
         "lib/netstandard1.0/Microsoft.Extensions.WebEncoders.dll",
         "lib/netstandard1.0/Microsoft.Extensions.WebEncoders.xml"
-      ]
-    },
-    "Microsoft.IdentityModel.Logging/1.1.0": {
-      "sha512": "Dv3G9GIdKyCc4xJjZECQosRJ9//4q/yXmb0vOUOjN1XpkCcHEt5UJ5S4zm8yJR+5tLODA159G2QtVNtK1RsAXw==",
-      "type": "package",
-      "path": "Microsoft.IdentityModel.Logging/1.1.0",
-      "files": [
-        "Microsoft.IdentityModel.Logging.1.1.0.nupkg.sha512",
-        "Microsoft.IdentityModel.Logging.nuspec",
-        "lib/net451/Microsoft.IdentityModel.Logging.dll",
-        "lib/netstandard1.4/Microsoft.IdentityModel.Logging.dll"
-      ]
-    },
-    "Microsoft.IdentityModel.Protocols/2.0.0": {
-      "sha512": "dHV39tCYxj8yMySDOUhNGakFQSNl3PZcweBWevtHyUeX/8UbroL0sQUHNjE38/UE0c4RS43WvWn+GO39R0PqOA==",
-      "type": "package",
-      "path": "Microsoft.IdentityModel.Protocols/2.0.0",
-      "files": [
-        "Microsoft.IdentityModel.Protocols.2.0.0.nupkg.sha512",
-        "Microsoft.IdentityModel.Protocols.nuspec",
-        "lib/net451/Microsoft.IdentityModel.Protocols.dll",
-        "lib/net451/Microsoft.IdentityModel.Protocols.xml",
-        "lib/netstandard1.4/Microsoft.IdentityModel.Protocols.dll",
-        "lib/netstandard1.4/Microsoft.IdentityModel.Protocols.xml"
-      ]
-    },
-    "Microsoft.IdentityModel.Protocols.OpenIdConnect/2.0.0": {
-      "sha512": "0TVkFvDN2fnDt7DelqZ5w7SEwpOiCycNc/CV1ZZjFEBY0Kn4EwG100Lhf7nvylm5CrgiDWYHb6Db8hnDDTpiWg==",
-      "type": "package",
-      "path": "Microsoft.IdentityModel.Protocols.OpenIdConnect/2.0.0",
-      "files": [
-        "Microsoft.IdentityModel.Protocols.OpenIdConnect.2.0.0.nupkg.sha512",
-        "Microsoft.IdentityModel.Protocols.OpenIdConnect.nuspec",
-        "lib/net451/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll",
-        "lib/net451/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml",
-        "lib/netstandard1.4/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll",
-        "lib/netstandard1.4/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml"
-      ]
-    },
-    "Microsoft.IdentityModel.Tokens/5.1.0": {
-      "sha512": "Hg1+IbP0F9oQ8qIxQobKoOczrwufYMNHrSXj+xF1+4VCpvymhyvpVcgLqi5GOie1qcQYp/yBy04dpBImemVXKg==",
-      "type": "package",
-      "path": "Microsoft.IdentityModel.Tokens/5.1.0",
-      "files": [
-        "Microsoft.IdentityModel.Tokens.5.1.0.nupkg.sha512",
-        "Microsoft.IdentityModel.Tokens.nuspec",
-        "lib/net451/Microsoft.IdentityModel.Tokens.dll",
-        "lib/net451/Microsoft.IdentityModel.Tokens.xml",
-        "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll",
-        "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.xml"
       ]
     },
     "Microsoft.Net.Http.Headers/1.1.0": {
@@ -7778,12 +7377,12 @@
         "runtimes/win/lib/netstandard1.3/System.Diagnostics.FileVersionInfo.dll"
       ]
     },
-    "System.Diagnostics.Process/4.3.0": {
-      "sha512": "J0wOX07+QASQblsfxmIMFc9Iq7KTXYL3zs2G/Xc704Ylv3NpuVdo6gij6V3PGiptTxqsK0K7CdXenRvKUnkA2g==",
+    "System.Diagnostics.Process/4.1.0": {
+      "sha512": "mpVZ5bnlSs3tTeJ6jYyDJEIa6tavhAd88lxq1zbYhkkCu0Pno2+gHXcvZcoygq2d8JxW3gojXqNJMTAshduqZA==",
       "type": "package",
-      "path": "System.Diagnostics.Process/4.3.0",
+      "path": "System.Diagnostics.Process/4.1.0",
       "files": [
-        "System.Diagnostics.Process.4.3.0.nupkg.sha512",
+        "System.Diagnostics.Process.4.1.0.nupkg.sha512",
         "System.Diagnostics.Process.nuspec",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -8222,19 +7821,6 @@
         "runtimes/unix/lib/netstandard1.3/System.Globalization.Extensions.dll",
         "runtimes/win/lib/net46/System.Globalization.Extensions.dll",
         "runtimes/win/lib/netstandard1.3/System.Globalization.Extensions.dll"
-      ]
-    },
-    "System.IdentityModel.Tokens.Jwt/5.1.0": {
-      "sha512": "oMcOZ0/7seZYkv8yRPBlfHyc7K/33TS0hVtshvOAiH9rHWqCb3htq4mEbOtqMTo45pzblcm10ArpERlZrSS69A==",
-      "type": "package",
-      "path": "System.IdentityModel.Tokens.Jwt/5.1.0",
-      "files": [
-        "System.IdentityModel.Tokens.Jwt.5.1.0.nupkg.sha512",
-        "System.IdentityModel.Tokens.Jwt.nuspec",
-        "lib/net451/System.IdentityModel.Tokens.Jwt.dll",
-        "lib/net451/System.IdentityModel.Tokens.Jwt.xml",
-        "lib/netstandard1.4/System.IdentityModel.Tokens.Jwt.dll",
-        "lib/netstandard1.4/System.IdentityModel.Tokens.Jwt.xml"
       ]
     },
     "System.Interactive.Async/3.0.0": {
@@ -11669,16 +11255,14 @@
     "": [
       "AspNet.Security.OAuth.Validation >= 1.0.0-alpha2-final",
       "CoreCLR-NCalc >= 2.1.2",
-      "IdentityServer4 >= 1.0.0",
-      "IdentityServer4.AccessTokenValidation >= 1.0.2",
-      "IdentityServer4.AspNetIdentity >= 1.0.0",
-      "IdentityServer4.EntityFramework >= 1.0.0",
       "Microsoft.ApplicationInsights.AspNetCore >= 1.0.0",
       "Microsoft.AspNetCore.AngularServices >= 1.0.0-*",
       "Microsoft.AspNetCore.Diagnostics >= 1.1.0",
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 1.0.0",
       "Microsoft.AspNetCore.Identity >= 1.1.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 1.1.0",
       "Microsoft.AspNetCore.Mvc >= 1.1.0",
+      "Microsoft.AspNetCore.Mvc.Core >= 1.1.0",
       "Microsoft.AspNetCore.Razor.Tools >= 1.0.0-preview2-final",
       "Microsoft.AspNetCore.Server.IISIntegration >= 1.1.0",
       "Microsoft.AspNetCore.Server.Kestrel >= 1.1.0",

@@ -1,5 +1,5 @@
 <form [formGroup]="conditionForm" class="form-inline">
-    <select class="form-control" [disabled]="conditionForm.get('seqNum').value != 1 || conditionForm.get('leftField').invalid" formControlName="chain_Operation">
+    <select class="form-control" formControlName="chain_Operation">
         <option value="||">Or</option>
         <option value="&&">And</option>
     </select>

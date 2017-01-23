@@ -6,10 +6,11 @@ using System.IO;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Backend.Models.EntityModels;
 using Serilog;
+using Backend.Helpers;
+
 
 namespace Backend
 {
@@ -45,16 +46,13 @@ namespace Backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var corsBuilder = new CorsPolicyBuilder();
-            corsBuilder.AllowAnyHeader();
-            corsBuilder.AllowAnyMethod();
-            corsBuilder.AllowAnyOrigin(); // For anyone access.
-            //corsBuilder.WithOrigins("http://localhost:56573"); // for a specific url. Don't add a forward slash on the end!
-            corsBuilder.AllowCredentials();
-
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowAll", corsBuilder.Build());
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
             });
 
             services.AddMvc();
@@ -70,16 +68,17 @@ namespace Backend
                 .AddEntityFrameworkStores<GTiHubContext>()
                 .AddDefaultTokenProviders();
 
-            // Add the TransformHelpers service
+            // Add the 
             //services.TryAddTransient<IProjectHelpers, ProjectHelpers>();
-            //services.TryAddTransient<ITransformHelpers, TransformHelpers>();
-            services.TryAddTransient<IExtractHelpers, ExtractHelpers>();
+            services.TryAddTransient<ITransformHelpers, TransformHelpers>();
+            services.TryAddTransient<IFileHelpers, FileHelpers>();
+            //services.TryAddTransient<IExtractHelpers, ExtractHelpers>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         public void Configure(IApplicationBuilder app)
         {
-            app.UseCors("AllowAll");
+            app.UseCors("CorsPolicy");
             app.UseDeveloperExceptionPage();
 
             app.Use(async (context, next) =>

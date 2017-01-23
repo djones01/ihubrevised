@@ -30,7 +30,7 @@
                         </div>           
                     </div>
                     <div class="form-group">
-                        <button type="button" class="btn btn-default" (click)="addTransform()"><span class="fa fa-plus"></span> Add Transformation</button>
+                        <button type="button" class="btn btn-secondary" (click)="addTransform()"><span class="fa fa-plus"></span> Add Transformation</button>
                     </div>
                 </div>  
             </div>  
@@ -43,7 +43,7 @@
             <transformation-edit [group]="mapForm.controls.transformations.controls[i]" [i]="i"></transformation-edit>
         </p-panel>           
         <hr *ngIf="mapForm.controls.transformations.length > 0"/>
-        <button type="button" class="btn btn-default" (click)="initMapForm()"><span class="fa fa-eraser"></span> Reset Map</button>      
+        <button type="button" class="btn btn-secondary" (click)="initMapForm()"><span class="fa fa-eraser"></span> Reset Map</button>      
         <button type="submit" class="btn btn-primary" [disabled]="!mapForm.valid">Submit</button>     
     </form>
 </div>

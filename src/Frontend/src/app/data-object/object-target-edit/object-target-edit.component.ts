@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Validators, FormGroup, FormArray, FormBuilder, AbstractControl } from '@angular/forms';
+import { FormGroup, FormArray, AbstractControl } from '@angular/forms';
+import { DataObjectBuilderService } from '../services/data-object-builder.service';
 
 @Component({
   selector: 'object-target-edit',
@@ -10,41 +11,9 @@ export class ObjectTargetEditComponent implements OnInit {
   @Input('group')
   objectTargetForm: FormGroup;
 
-  initFileInfo()
-  {
-      return this._fb.group({
-            fileName: ['', Validators.required],
-            fileType: ['', Validators.required],
-            effective_Date: [new Date()],
-            active: [true],
-            compressFile: [false],
-            rowLimit: [0],
-            fileSizeLimit: [0],
-            fileSizeLimitUnits: ['']
-        });
-  }
-  initApiInfo()
-  {
-       return this._fb.group({
-            fileName: ['', Validators.required],
-            fileType: ['', Validators.required],
-            effective_Date: [new Date()],
-            active: [true],
-            compressFile: [false],
-            rowLimit: [0],
-            fileSizeLimit: [0],
-            fileSizeLimitUnits: ['mb'],
-            batchProcessLines: [false],
-            delimiter: ['', Validators.required],
-            startRow: [1, Validators.required],
-            fixedLength: [false],
-            length: [null]
-        });
-  }
-
   addFileInfo() {
       const control = <FormArray>this.objectTargetForm.controls['fileInfos'];
-      control.push(this.initFileInfo());
+      control.push(this.dataObjectBuilderService.initTargetFileInfo());
   }
 
   removeFileInfo(i: number) {
@@ -54,7 +23,7 @@ export class ObjectTargetEditComponent implements OnInit {
 
   addApiInfo() {
       const control = <FormArray>this.objectTargetForm.controls['apiInfos'];
-      control.push(this.initApiInfo());
+      control.push(this.dataObjectBuilderService.initTargetApiInfo());
   }
 
   removeApiInfo(i: number) {
@@ -62,7 +31,7 @@ export class ObjectTargetEditComponent implements OnInit {
       control.removeAt(i);
   }
 
-  constructor(private _fb: FormBuilder) { }
+  constructor(private dataObjectBuilderService: DataObjectBuilderService) { }
 
   ngOnInit() {
   }

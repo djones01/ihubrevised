@@ -8,12 +8,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './home/home.module';
 import { AuthModule } from './shared/auth/auth.module';
 import { AlertModule } from './shared/alert/alert.module';
-import { UiModule } from './shared/ui/ui.module';
 import { DataModule } from './shared/data/data.module';
 
 // components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { LoadingDotsComponent } from './shared/ui/loading-dots/loading-dots.component';
 
 // app settings
 import { AppSettings } from './app-settings';
@@ -21,7 +21,8 @@ import { AppSettings } from './app-settings';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    LoadingDotsComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +32,6 @@ import { AppSettings } from './app-settings';
     HomeModule,
     AuthModule,
     AlertModule,
-    UiModule,
     DataModule,
     AppRoutingModule
   ],

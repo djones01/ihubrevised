@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Backend.Models.EntityModels
 {
-    public class FileInfo
+    public class FileInfo : Entity
     {
         public FileInfo() { }
 
@@ -22,9 +23,11 @@ namespace Backend.Models.EntityModels
         public int RowLimit { get; set; }
         public bool BatchProcessLines { get; set; }
         public char Delimiter { get; set; }
-        public int StartRow { get; set; }
-        public bool FixedLength { get; set; }
-        public int Length { get; set; }
+        public int StartLine { get; set; }
+        public ICollection<FixedLengthLine> FixedLengthLines { get; set; }
+
+        [NotMapped]
+        public IFormFile extractFile { get; set; }
         
         public int ObjectFormatId { get; set; }
         public ObjectFormat ObjectFormat { get; set; }

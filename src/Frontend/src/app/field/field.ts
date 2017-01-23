@@ -10,6 +10,12 @@ export interface Field {
     date_Modified?: Date;
 }
 
+export interface FieldStatus 
+{
+    isExisting: boolean;
+    field: Field;
+}
+
 export class Field implements Field {
     constructor(
         public name: string,
@@ -35,5 +41,15 @@ export class Field implements Field {
         a.length !== b.length || 
         a.active !== b.active) 
             return false;
+    }
+
+    public static CheckFieldInList(list: FieldStatus[], field: Field, isExisting: boolean){
+        var i;
+        for (i = 0; i < list.length; i++) {
+            if (list[i].field === field) {
+                return true;
+            }
+        }
+        list.push({ isExisting: isExisting, field: field });
     }
 }

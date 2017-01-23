@@ -11,6 +11,13 @@ namespace Backend.Models.EntityModels
     {
         public Field() { }
 
+        public Field(string name, string datatype, int length)
+        {
+            Name = name;
+            Datatype = datatype;
+            Length = length;
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int FieldId { get; set; }

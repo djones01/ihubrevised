@@ -1,0 +1,97 @@
+<form [formGroup]="fileInfoForm">   
+    <div class="row">
+      <div class="col-md-4">
+          <div class="form-group">
+              <label for="batchProcessLines">Process All Lines</label>
+              <div>
+                  <p-inputSwitch onLabel="Yes" offLabel="No" formControlName="batchProcessLines"></p-inputSwitch>
+              </div>           
+          </div>        
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+                <label for="active">Line Formats</label>
+                <select class="form-control" formControlName="lineFormat">
+                  <option value="" selected disabled>Select Line Format</option>
+                  <option value="Delimited">Delimited</option>
+                  <option value="FixedLength">Fixed Length</option>
+                  <option value="Mixed">Mixed</option>
+                </select> 
+                <small *ngIf="fileInfoForm.get('lineFormat').invalid" class="text-danger">
+                    Line Format required
+                </small>         
+            </div>  
+      </div>
+      <div class="col-md-4">
+          <div class="form-group"> 
+              <label for="dataFile">Select Data File</label>
+              <div class="input-group">
+                <label class="input-group-btn">
+                    <span class="btn btn-primary">
+                        Browse&hellip; <input type="file" name="dataFile" style="display:none;" #dataFile (change)="onFileChange($event)" />
+                    </span>
+                </label>
+            </div>
+            <small *ngIf="fileInfoForm.get('file').invalid" class="text-danger">
+                File required
+            </small>
+          </div>  
+      </div>
+    </div>
+    <div class="row">   
+        <div class="col-md-4">
+            <div class="form-group">
+              <label>Beginning Line Number</label>
+              <input type="number" class="form-control" min="1" formControlName="startLine" />       
+          </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group" *ngIf="fileInfoForm.get('lineFormat').value == 'Delimited' || fileInfoForm.get('lineFormat').value == 'Mixed'">
+                <label for="delimiter">Delimiter</label>
+                <input type="text" name="delimiter" class="form-control delimiter-field" maxlength="1" size="1" formControlName="delimiter" />
+                <small *ngIf="fileInfoForm.get('delimiter').invalid" class="text-danger">
+                    Delimiter required
+                </small>          
+            </div>
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+    <p-panel header="Fixed Length Lines" *ngIf="fileInfoForm.get('lineFormat').value == 'FixedLength' || fileInfoForm.get('lineFormat').value == 'Mixed'">
+      <div formArrayName="flls">
+            <div class="form-group">
+                <button type="button" class="btn btn-secondary" (click)="addFll()"><span class="fa fa-plus"></span> Add Fixed Length Line</button>
+            </div>
+            <div *ngFor="let fll of fileInfoForm.get('flls').controls; let i=index">
+                <div [formGroup]="fll" class="row">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>Line Length</label>
+                            <input type="number" class="form-control" min="1" formControlName="lineLength" />       
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>Line Index</label>
+                            <input type="number" class="form-control" min="1" formControlName="lineIndex" />       
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <label>Field Indexes</label>
+                            <p-chips (onAdd)="addedFllFieldIndex($event, i)" formControlName="fieldIndexes"></p-chips>     
+                             <small *ngIf="fll.get('fieldIndexes').invalid" class="text-danger">
+                                Field Indexes are required
+                            </small>
+                        </div>
+                    </div>
+                    <div class="col-md-1" style="vertical-align: middle">
+                        <div class="form-group">                               
+                            <button class="btn btn-secondary" (click)="removeFll(i)"><span class="fa fa-close"></span></button>
+                        </div>
+                    </div>              
+                </div>         
+            </div>    
+        </div> 
+    </p-panel>
+</form>

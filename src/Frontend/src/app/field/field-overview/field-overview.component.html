@@ -1,12 +1,21 @@
-<button type="button" class="btn btn-default" (click)="toggleDialog()">Edit Fields</button>
+<button type="button" class="btn btn-secondary" (click)="toggleDialog()">Edit Fields</button>
 
-<p-dialog header="Select and Create Fields" [modal]="true" responsive="true" width="1000" [(visible)]="showDialog" [closable]="true">
+<p-dialog header="Select and Create Fields" [modal]="true" responsive="true" width="1000" [(visible)]="showDialog" [resizable]="false" [closable]="true">
     <p-tabView>
         <p-tabPanel header="Add New Fields">
-
+            <div class="add-padding-container scroll-container">
+                <new-fields [group]="fieldForm"></new-fields>
+            </div>    
         </p-tabPanel>
         <p-tabPanel header="Select Existing Fields">
-            <field-select-existing></field-select-existing>
+            <div class="add-padding-container scroll-container">
+                <field-select-existing></field-select-existing>
+            </div>      
+        </p-tabPanel>
+        <p-tabPanel header="Current Working Set">
+            <div class="add-padding-container">
+                <field-order-list></field-order-list>
+            </div>    
         </p-tabPanel>
     </p-tabView>
 </p-dialog>

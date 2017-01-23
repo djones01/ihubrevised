@@ -26,7 +26,10 @@
         public DbSet<Client> Clients { get; set; }
         public DbSet<Condition> Conditions { get; set; }
         public DbSet<DataObject> DataObjects { get; set; }
+        public DbSet<DataObjectFormat> DataObjectFormats { get; set; }
+        public DbSet<DataObjectTarget> DataObjectTargets { get; set; }
         public DbSet<Field> Fields { get; set; }
+        public DbSet<FixedLengthLine> FixedLengthLines { get; set; }
         public DbSet<Map> Maps { get; set; }
         public DbSet<MapObjectFormat> MapObjectFormats { get; set; }
         public DbSet<MapObjectTarget> MapObjectTargets { get; set; }
@@ -55,6 +58,8 @@
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<DataObjectFormat>().HasKey(t => new { t.DataObjectId, t.ObjectFormatId });
+            modelBuilder.Entity<DataObjectTarget>().HasKey(t => new { t.DataObjectId, t.ObjectTargetId });
             modelBuilder.Entity<ProjectMap>().HasKey(t => new { t.ProjectId, t.MapId });
             modelBuilder.Entity<ObjectFormatField>().HasKey(t => new { t.ObjectFormatId, t.FieldId });
             modelBuilder.Entity<MapObjectTarget>().HasKey(t => new { t.MapId, t.ObjectTargetId });

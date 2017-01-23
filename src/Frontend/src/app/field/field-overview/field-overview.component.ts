@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'field-overview',
@@ -6,11 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./field-overview.component.css']
 })
 export class FieldOverviewComponent implements OnInit {
-    private showDialog;
+  @Input('group')
+  fieldForm: FormGroup;
 
-    toggleDialog(){
-      this.showDialog = !this.showDialog;
-    }
+  private showDialog;
+
+  toggleDialog(){
+    this.showDialog = !this.showDialog;
+  }
 
   constructor() { }
 

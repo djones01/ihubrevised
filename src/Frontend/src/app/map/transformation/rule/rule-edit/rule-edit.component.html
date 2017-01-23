@@ -23,14 +23,14 @@
     </div> 
     <p-panel *ngIf="ruleForm.controls.rule_Operation.value != ''" header="Add / Edit Rule Values" [toggleable]="true" styleClass="add-margin-bottom">
       <div *ngIf="ruleForm.controls.rule_Operation.value == 'field'">
-                <button type="button" (click)="addRuleField()" class="btn btn-default add-margin-bottom"><span class="fa fa-plus"></span> Add Rule Field</button>          
+                <button type="button" (click)="addRuleField()" class="btn btn-secondary add-margin-bottom"><span class="fa fa-plus"></span> Add Rule Field</button>          
                 <div formArrayName="ruleFields" *ngIf="ruleForm.controls.ruleFields.length > 0">
                     <div class="row" *ngFor="let ruleField of ruleForm.controls.ruleFields.controls; let i=index">
                         <div class="col-md-11">
                             <rule-field-edit [group]="ruleForm.controls.ruleFields.controls[i]"></rule-field-edit>
                         </div>
                         <div class="col-md-1">
-                            <button type="button" class="btn btn-default" (click)="removeRuleField(i)"><span class="fa fa-trash-o"></span></button>
+                            <button type="button" class="btn btn-secondary" (click)="removeRuleField(i)"><span class="fa fa-close"></span></button>
                         </div>
                     </div> 
                 </div>                            

@@ -50,7 +50,7 @@ export class MapBuilderService {
         let operation = this._fb.control({value: '', disabled: leftField.invalid });
         return this._fb.group({
             seqNum: [this.condSeqNum++],
-            chain_Operation: [''],
+            chain_Operation: [{ value: '', disabled: (leftField.invalid || this.condSeqNum == 1) },],
             left_Paren: [{ value: '', disabled: leftField.invalid }],
             operation: operation,
             cond_Value: [{ value: '', disabled: operation.invalid }],

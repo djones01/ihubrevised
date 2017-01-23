@@ -228,6 +228,32 @@ namespace Backend.Migrations
                     b.ToTable("DataObjects");
                 });
 
+            modelBuilder.Entity("Backend.Models.EntityModels.DataObjectFormat", b =>
+                {
+                    b.Property<int>("DataObjectId");
+
+                    b.Property<int>("ObjectFormatId");
+
+                    b.HasKey("DataObjectId", "ObjectFormatId");
+
+                    b.HasIndex("ObjectFormatId");
+
+                    b.ToTable("DataObjectFormats");
+                });
+
+            modelBuilder.Entity("Backend.Models.EntityModels.DataObjectTarget", b =>
+                {
+                    b.Property<int>("DataObjectId");
+
+                    b.Property<int>("ObjectTargetId");
+
+                    b.HasKey("DataObjectId", "ObjectTargetId");
+
+                    b.HasIndex("ObjectTargetId");
+
+                    b.ToTable("DataObjectTargets");
+                });
+
             modelBuilder.Entity("Backend.Models.EntityModels.Field", b =>
                 {
                     b.Property<int>("FieldId")
@@ -251,11 +277,21 @@ namespace Backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("Active");
+
                     b.Property<bool>("BatchProcessLines");
 
                     b.Property<bool>("CompressFile");
 
+                    b.Property<string>("Created_By");
+
+                    b.Property<DateTime?>("Creation_Date");
+
+                    b.Property<DateTime?>("Date_Modified");
+
                     b.Property<char>("Delimiter");
+
+                    b.Property<DateTime>("Effective_Date");
 
                     b.Property<string>("FileName");
 
@@ -265,9 +301,9 @@ namespace Backend.Migrations
 
                     b.Property<string>("FileType");
 
-                    b.Property<bool>("FixedLength");
+                    b.Property<bool>("Hidden");
 
-                    b.Property<int>("Length");
+                    b.Property<string>("Modified_By");
 
                     b.Property<int>("ObjectFormatId");
 
@@ -275,7 +311,11 @@ namespace Backend.Migrations
 
                     b.Property<int>("RowLimit");
 
-                    b.Property<int>("StartRow");
+                    b.Property<int>("StartLine");
+
+                    b.Property<byte[]>("Timestamp")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.HasKey("FileInfoId");
 
@@ -284,6 +324,27 @@ namespace Backend.Migrations
                     b.HasIndex("ObjectTargetId");
 
                     b.ToTable("FileInfo");
+                });
+
+            modelBuilder.Entity("Backend.Models.EntityModels.FixedLengthLine", b =>
+                {
+                    b.Property<int>("FixedLengthLineId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FieldIndexes");
+
+                    b.Property<int?>("FileInfoId");
+
+                    b.Property<int>("LineIndex");
+
+                    b.Property<int>("LineLength");
+
+                    b.HasKey("FixedLengthLineId");
+
+                    b.HasIndex("FileInfoId");
+
+                    b.ToTable("FixedLengthLines");
                 });
 
             modelBuilder.Entity("Backend.Models.EntityModels.Map", b =>
@@ -312,15 +373,11 @@ namespace Backend.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int?>("ObjectTargetId");
-
                     b.Property<byte[]>("Timestamp")
                         .IsConcurrencyToken()
                         .ValueGeneratedOnAddOrUpdate();
 
                     b.HasKey("MapId");
-
-                    b.HasIndex("ObjectTargetId");
 
                     b.ToTable("Maps");
                 });
@@ -346,6 +403,8 @@ namespace Backend.Migrations
 
                     b.Property<int>("ObjectTargetId");
 
+                    b.Property<int>("SeqNum");
+
                     b.HasKey("MapId", "ObjectTargetId");
 
                     b.HasIndex("ObjectTargetId");
@@ -359,17 +418,21 @@ namespace Backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("DataObjectId");
-
                     b.Property<string>("Description");
+
+                    b.Property<int>("FieldCount");
 
                     b.Property<bool>("FromBatchFiles");
 
                     b.Property<string>("Name");
 
-                    b.HasKey("ObjectFormatId");
+                    b.Property<int>("NumSourceApis");
 
-                    b.HasIndex("DataObjectId");
+                    b.Property<int>("NumSourceFiles");
+
+                    b.Property<int>("TotalSourceCount");
+
+                    b.HasKey("ObjectFormatId");
 
                     b.ToTable("ObjectFormats");
                 });
@@ -397,19 +460,21 @@ namespace Backend.Migrations
 
                     b.Property<bool>("CheckTypes");
 
-                    b.Property<int?>("DataObjectId");
-
                     b.Property<string>("Description");
 
                     b.Property<bool>("EvalConditions");
 
                     b.Property<string>("Name");
 
+                    b.Property<int>("NumSourceApis");
+
+                    b.Property<int>("NumSourceFiles");
+
                     b.Property<bool>("StopOnError");
 
-                    b.HasKey("ObjectTargetId");
+                    b.Property<int>("TotalSourceCount");
 
-                    b.HasIndex("DataObjectId");
+                    b.HasKey("ObjectTargetId");
 
                     b.ToTable("ObjectTargets");
                 });
@@ -796,6 +861,32 @@ namespace Backend.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("Backend.Models.EntityModels.DataObjectFormat", b =>
+                {
+                    b.HasOne("Backend.Models.EntityModels.DataObject", "DataObject")
+                        .WithMany("DataObjectFormats")
+                        .HasForeignKey("DataObjectId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Backend.Models.EntityModels.ObjectFormat", "ObjectFormat")
+                        .WithMany("DataObjectFormats")
+                        .HasForeignKey("ObjectFormatId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Backend.Models.EntityModels.DataObjectTarget", b =>
+                {
+                    b.HasOne("Backend.Models.EntityModels.DataObject", "DataObject")
+                        .WithMany("DataObjectTargets")
+                        .HasForeignKey("DataObjectId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Backend.Models.EntityModels.ObjectTarget", "ObjectTarget")
+                        .WithMany("DataObjectTargets")
+                        .HasForeignKey("ObjectTargetId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("Backend.Models.EntityModels.FileInfo", b =>
                 {
                     b.HasOne("Backend.Models.EntityModels.ObjectFormat", "ObjectFormat")
@@ -809,17 +900,17 @@ namespace Backend.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Backend.Models.EntityModels.Map", b =>
+            modelBuilder.Entity("Backend.Models.EntityModels.FixedLengthLine", b =>
                 {
-                    b.HasOne("Backend.Models.EntityModels.ObjectTarget")
-                        .WithMany("ObjectFormatFields")
-                        .HasForeignKey("ObjectTargetId");
+                    b.HasOne("Backend.Models.EntityModels.FileInfo")
+                        .WithMany("FixedLengthLines")
+                        .HasForeignKey("FileInfoId");
                 });
 
             modelBuilder.Entity("Backend.Models.EntityModels.MapObjectFormat", b =>
                 {
                     b.HasOne("Backend.Models.EntityModels.Map", "Map")
-                        .WithMany("ObjectFormat")
+                        .WithMany("MapObjectFormats")
                         .HasForeignKey("MapId")
                         .OnDelete(DeleteBehavior.Cascade);
 
@@ -832,21 +923,14 @@ namespace Backend.Migrations
             modelBuilder.Entity("Backend.Models.EntityModels.MapObjectTarget", b =>
                 {
                     b.HasOne("Backend.Models.EntityModels.Map", "Map")
-                        .WithMany()
+                        .WithMany("MapObjectTargets")
                         .HasForeignKey("MapId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Backend.Models.EntityModels.ObjectTarget", "ObjectTarget")
-                        .WithMany()
+                        .WithMany("MapObjectTargets")
                         .HasForeignKey("ObjectTargetId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Backend.Models.EntityModels.ObjectFormat", b =>
-                {
-                    b.HasOne("Backend.Models.EntityModels.DataObject")
-                        .WithMany("ObjectFormats")
-                        .HasForeignKey("DataObjectId");
                 });
 
             modelBuilder.Entity("Backend.Models.EntityModels.ObjectFormatField", b =>
@@ -860,13 +944,6 @@ namespace Backend.Migrations
                         .WithMany("ObjectFormatFields")
                         .HasForeignKey("ObjectFormatId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Backend.Models.EntityModels.ObjectTarget", b =>
-                {
-                    b.HasOne("Backend.Models.EntityModels.DataObject")
-                        .WithMany("ObjectTargets")
-                        .HasForeignKey("DataObjectId");
                 });
 
             modelBuilder.Entity("Backend.Models.EntityModels.Project", b =>

@@ -13,7 +13,7 @@
     </p-column>
     <p-column field="active" header="Active" [filter]="true" filterMatchMode="equals" [style]="{'overflow':'visible'}">
         <template pTemplate="filter" let-col>
-            <p-inputSwitch onLabel="Yes" offLabel="No" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-inputSwitch>
+            <input type="checkbox" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" class="ui-column-filter">
         </template>
     </p-column>
 </p-dataTable>

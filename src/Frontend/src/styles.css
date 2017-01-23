@@ -34,4 +34,11 @@
 .form-inline > * {
     margin: 5px 10px !important;
 }
+.add-padding-container {
+    padding: 15px;
+}
+.scroll-container {
+    overflow-y: scroll;
+    max-height: 480px;
+}
 

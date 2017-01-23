@@ -42,16 +42,26 @@ namespace Backend.Controllers
         [HttpGet("GetObjectFormats/{id}")]
         public IEnumerable<ObjectFormat> GetObjectFormats(int id)
         {
-            var sourceFields = this._dbContext.ObjectFormats.Where(x => x. == id).OrderBy(x => x.SeqNum).ToList();
-            return sourceFields;
+            var dataObjectFormats = this._dbContext.DataObjectFormats.Where(x => x.DataObjectId == id);
+            var objectFormats = new List<ObjectFormat>();
+            foreach(var dataObjectFormat in dataObjectFormats)
+            {
+                objectFormats.Add(this._dbContext.ObjectFormats.Find(dataObjectFormat.ObjectFormatId));
+            }
+            return objectFormats;
         }
 
         // GET api/DataObjects/GetObjectTargets/5
         [HttpGet("GetObjectTargets/{id}")]
         public IEnumerable<ObjectTarget> GetObjectTargets(int id)
         {
-            var sourceFields = this._dbContext.SourceFields.Where(x => x.SourceId == id).OrderBy(x => x.SeqNum).ToList();
-            return sourceFields;
+            var dataObjectTargets = this._dbContext.DataObjectTargets.Where(x => x.DataObjectId == id);
+            var objectTargets = new List<ObjectTarget>();
+            foreach (var dataObjectTarget in dataObjectTargets)
+            {
+                objectTargets.Add(this._dbContext.ObjectTargets.Find(dataObjectTarget.ObjectTargetId));
+            }
+            return objectTargets;
         }
 
         // GET api/DataObjects/5

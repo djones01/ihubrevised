@@ -1,0 +1,7 @@
+.modify-fileupload > .ui-progressbar {
+    display: none;
+}
+
+.modify-fileupload > .fa-upload {
+    display: none;
+}

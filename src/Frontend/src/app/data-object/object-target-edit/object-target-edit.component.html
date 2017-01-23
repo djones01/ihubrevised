@@ -25,8 +25,8 @@
     </div>
     <p-panel header="Target Infos" [toggleable]="true" styleClass="add-margin-bottom">
         <div class="form-group">
-            <button type="button" class="btn btn-default" (click)="addFileInfo()">New File Info</button>
-            <button type="button" class="btn btn-default" (click)="addApiInfo()">New API Info</button>
+            <button type="button" class="btn btn-secondary" (click)="addFileInfo()">New File Info</button>
+            <button type="button" class="btn btn-secondary" (click)="addApiInfo()">New API Info</button>
         </div>     
         <div formArrayName="fileInfos">
             <div class="card form-group" *ngFor="let fileInfo of objectTargetForm.controls.fileInfos.controls; let i=index">

@@ -1,0 +1,38 @@
+<p-panel header="File Options and Selection for {{ extractMode }}" [toggleable]="true">
+  <form [formGroup]="extractForm">
+    <div class="form-group">
+        <label>Are your {{ extractMode }} coming from one file or multiple files?</label>
+        <div>
+            <p-inputSwitch onLabel="Multiple" offLabel="Single" formControlName="fromBatchFiles"></p-inputSwitch>
+        </div>           
+    </div>
+    <div *ngIf="extractMode == 'Formats' && extractForm.get('fromBatchFiles').value == true" class="form-group">
+        <label>Should each file be treated as a separate format?</label>
+        <div>
+            <p-inputSwitch onLabel="Yes" offLabel="No" formControlName="perFileFormats"></p-inputSwitch>
+        </div>           
+    </div>
+    <div *ngIf="extractForm.get('fromBatchFiles').value == true" class="form-group">
+        <label>Should the order in which you provide the files be preserved?</label>
+        <div>
+            <p-inputSwitch onLabel="Yes" offLabel="No" formControlName="preserveFileOrdering"></p-inputSwitch>
+        </div>           
+    </div>
+    <h5>Provide Input File(s) and related Information</h5>
+    <div class="form-group" *ngIf="extractForm.get('fromBatchFiles').value == true">
+        <button type="button" class="btn btn-secondary" (click)="addSourceFileInfo()"><span class="fa fa-plus"></span> Add New File</button>
+    </div>
+    <p-panel formArrayName="fileInfos" *ngFor="let fileInfo of extractForm.get('fileInfos').controls; let i=index" [toggleable]="true" styleClass="add-margin-bottom">
+        <header style="display: inline-block;">           
+            <span *ngIf="extractForm.get('fileInfos').controls.length > 1 || extractForm.get('fromBatchFiles').value == true" 
+                class="fa fa-close ui-panel-titlebar-toggler" (click)="removeSourceFileInfo(i)"></span> 
+            <span *ngIf="extractForm.get('fileInfos').controls[i].get('fileName').value == ''">New File Source</span>       
+            <span *ngIf="extractForm.get('fileInfos').controls[i].get('fileName').value != ''">{{extractForm.get('fileInfos').controls[i].get('fileName').value}}</span>                            
+        </header>
+        <file-select-with-info [group]="extractForm.get('fileInfos').controls[i]" [index]="i"></file-select-with-info>
+    </p-panel>   
+  </form>
+  <button type="button" class="btn btn-secondary" (click)="newExtractForm()"><span class="fa fa-eraser"></span> Clear</button>
+  <button class="btn btn-primary" [disabled]="extractForm.invalid" (click)="uploadForExtraction(extractForm.value)">Upload Files</button>
+</p-panel>
+

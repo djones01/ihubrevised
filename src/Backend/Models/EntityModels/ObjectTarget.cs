@@ -61,5 +61,6 @@ namespace Backend.Models.EntityModels
         }
 
         public ICollection<MapObjectTarget> MapObjectTargets { get; set; }
+        public ICollection<DataObjectTarget> DataObjectTargets { get; set; }
     }
 }

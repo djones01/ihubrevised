@@ -11,14 +11,7 @@ export class DataService {
     private api_url: string;
     private headers: Headers;
 
-    /*constructor(private authHttp: AuthHttp, private appSettings: AppSettings) {
-        this.api_url = this.appSettings.api_url;
-        this.headers = new Headers();
-        this.headers.append("Content-Type", "application/json");
-        this.headers.append("Accept", "application/json");
-    }*/
-
-    constructor(private _http: Http, private appSettings: AppSettings, private alertService: AlertService) {
+    constructor(private http: Http, private appSettings: AppSettings, private alertService: AlertService) {
         this.api_url = this.appSettings.api_url;
         this.headers = new Headers();
         this.headers.append("Content-Type", "application/json");
@@ -26,67 +19,32 @@ export class DataService {
     }
 
     GetAll(action: string): Observable<any> {
-        return this._http.get(this.api_url + action)
+        return this.http.get(this.api_url + action)
             .map(res => res.json())
             .catch((error: any) => this.handleError(error));
     }
 
     Get(action: string, id: number): Observable<any> {
-        return this._http.get(this.api_url + action + "/" + id)
+        return this.http.get(this.api_url + action + "/" + id)
             .map(res => res.json())
             .catch((error: any) => this.handleError(error));
     }
 
     Add(action: string, itemToAdd: any): Observable<any> {
-        return this._http.post(this.api_url + action, JSON.stringify(itemToAdd), { headers: this.headers })
+        return this.http.post(this.api_url + action, JSON.stringify(itemToAdd), { headers: this.headers })
             .map(res => res.json())
             .catch((error: any) => this.handleError(error));
     }
 
     Update(action: string, id: number, itemToUpdate: any): Observable<any> {
-        return this._http
+        return this.http
             .put(this.api_url + action + "/" + id, JSON.stringify(itemToUpdate), { headers: this.headers })
             .catch((error: any) => this.handleError(error));
     }
 
     Delete(action: string, id: number): Observable<any> {
-        return this._http.delete(this.api_url + action + "/" + id)
+        return this.http.delete(this.api_url + action + "/" + id)
             .catch((error: any) => this.handleError(error));
-    }
-
-     /*GetAll(action: string): Observable<any> {
-        return this.authHttp.get(this.api_url + action)
-            .map(res => res.json())
-            .catch(this.handleError);
-    }
-
-    Get(action: string, id: number): Observable<any> {
-        return this.authHttp.get(this.api_url + action + "/" + id)
-            .map(res => res.json())
-            .catch(this.handleError);
-    }
-
-    Add(action: string, itemToAdd: any): Observable<any> {
-        return this.authHttp.post(this.api_url + action, JSON.stringify(itemToAdd), { headers: this.headers })
-            .map(res => res.json())
-            .catch(this.handleError);
-    }
-
-    Update(action: string, id: number, itemToUpdate: any): Observable<any> {
-        return this.authHttp
-            .put(this.api_url + action + "/" + id, JSON.stringify(itemToUpdate), { headers: this.headers })
-            .catch((error: any) => Observable.throw(error.json().error || "Server Error"));
-    }
-
-    Delete(action: string, id: number): Observable<any> {
-        return this.authHttp.delete(this.api_url + action + "/" + id)
-            .catch((error: any) => Observable.throw(error.json().error || "Server Error"));
-    }*/
-
-    
-    private extractData(res: Response) {
-        const body = res.json();
-        return body || {};
     }
     
     private handleError(error: any) {

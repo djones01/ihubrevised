@@ -1,21 +1,29 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { FileSelectWithInfoComponent } from './file-select-with-info/file-select-with-info.component';
+import { ExtractionComponent } from './extraction/extraction.component';
 
 // third party modules
-import { PanelModule, FileUploadModule, InputSwitchModule } from 'primeng/primeng';
-import { DataFileSelectComponent } from './data-file-select/data-file-select.component';
+import { PanelModule, InputSwitchModule, ChipsModule } from 'primeng/primeng';
+
+import { ExtractionService } from './extraction.service';
+
+import { PipesModule } from '../shared/pipes/pipes.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     PanelModule,
-    FileUploadModule,
-    InputSwitchModule
+    InputSwitchModule,
+    PipesModule,
+    ChipsModule
   ],
-  declarations: [DataFileSelectComponent],
-  exports: [DataFileSelectComponent]
+  declarations: [ExtractionComponent, FileSelectWithInfoComponent],
+  exports: [ExtractionComponent],
+  providers: [ExtractionService]
 })
 export class FileHandlingModule { }

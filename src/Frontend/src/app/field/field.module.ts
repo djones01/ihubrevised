@@ -7,16 +7,25 @@ import { FieldEditComponent } from './field-edit/field-edit.component';
 import { FieldEditListComponent } from './field-edit-list/field-edit-list.component';
 import { FieldOverviewComponent } from './field-overview/field-overview.component';
 import { FieldSelectExistingComponent } from './field-select-existing/field-select-existing.component';
+import { NewFieldsComponent } from './new-fields/new-fields.component';
 
 // modules
-import { DataTableModule, TabViewModule, DialogModule, ConfirmDialogModule, DropdownModule, InputSwitchModule } from 'primeng/primeng';
+import { 
+  DataTableModule, 
+  TabViewModule, 
+  DialogModule, 
+  ConfirmDialogModule, 
+  ConfirmationService, 
+  DropdownModule, 
+  InputSwitchModule, 
+  OrderListModule 
+} from 'primeng/primeng';
+import { FileHandlingModule } from '../file-handling/file-handling.module';
 
 //services
 import { FieldService } from './field.service';
-
 import { FieldOptions } from './field-options';
-import { FieldExtractorComponent } from './field-extractor/field-extractor.component';
-
+import { FieldOrderListComponent } from './field-order-list/field-order-list.component';
 
 @NgModule({
   imports: [
@@ -28,10 +37,12 @@ import { FieldExtractorComponent } from './field-extractor/field-extractor.compo
     DialogModule,
     ConfirmDialogModule,
     DropdownModule,
-    InputSwitchModule
+    InputSwitchModule,
+    OrderListModule,
+    FileHandlingModule
   ],
-  declarations: [FieldEditComponent, FieldEditListComponent, FieldOverviewComponent, FieldSelectExistingComponent, FieldExtractorComponent],
-  providers: [FieldService, FieldOptions],
+  declarations: [FieldEditComponent, FieldEditListComponent, FieldOverviewComponent, FieldSelectExistingComponent, FieldOrderListComponent, NewFieldsComponent],
+  providers: [FieldService, FieldOptions, ConfirmationService],
   exports: [FieldOverviewComponent, FieldSelectExistingComponent]
 })
 export class FieldModule { }

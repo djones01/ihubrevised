@@ -1,7 +1,7 @@
 <ng-sidebar-container>
     <ng-sidebar [(opened)]="opened" [closeOnClickOutside]="true" [mode]="'push'" [position]="'right'" [closeOnClickOutside]="true" [keyClose]="true" [keyClose]="true">
         <p-panelMenu [model]="menuItems"></p-panelMenu>
-        <button type="button" class="btn btn-default" style="width: 100%" (click)="toggleMainBar()">
+        <button type="button" class="btn btn-secondary" style="width: 100%" (click)="toggleMainBar()">
             <span class="fa fa-close"></span>
             Close
         </button>
@@ -11,7 +11,7 @@
             <a routerLink="/pages/overview">
                 <img src="../../assets/images/grant-thornton-swirl-sm.png" alt="GTiHub">
             </a> 
-            <button type="button" class="btn btn-default" style="margin-left: 10px;" (click)="toggleMainBar()">
+            <button type="button" class="btn btn-secondary" style="margin-left: 10px;" (click)="toggleMainBar()">
                 <span class="fa fa-bars"></span>
                 Menu
             </button>
