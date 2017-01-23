@@ -1,2 +1,6 @@
-<extraction [group]="fieldsForm"></extraction>
-<field-edit-list *ngIf="fields.length > 0"></field-edit-list>
+<extraction [group]="fieldsForm" (extractionComplete)="onExtractionComplete($event)"></extraction>
+<field-edit-list [fields]="fields" [editingFormat]="editingFormat"></field-edit-list>
+<p-dialog header="Title" [(visible)]="displayWarning">
+    One or more fields were extracted which already exist in the new / existing field lists, do you still wish to add them?
+    <field-detail-list [fields]="warnList"></field-detail-list>
+</p-dialog>

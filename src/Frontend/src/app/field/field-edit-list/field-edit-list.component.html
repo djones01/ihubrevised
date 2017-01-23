@@ -1,3 +1,64 @@
-<form [formGroup]="fieldsForm">       
-
-</form>
+<p-panel header="Edit Fields" [toggleable]="true">   
+    <div class="add-margin-bottom">
+        <button class="btn btn-secondary" *ngIf="stagingForm.get('fields').controls.length > 0" (click)="clearNewFields()">Clear Fields</button>
+        <button class="btn btn-secondary" (click)="addField()">Add New Field</button>
+        <button class="btn btn-primary pull-right" *ngIf="stagingForm.get('fields').controls.length > 0 && editingFormat" [disabled]="stagingForm.get('fields').invalid" (click)="doneEditing()">Move Fields to Working Set  <span class="fa fa-arrow-right"></span></button>
+    </div>
+    <form [formGroup]="stagingForm">   
+        <div *ngIf="stagingForm.get('fields').controls.length > 0">
+            <div formArrayName="fields" *ngFor="let newField of stagingForm.get('fields').controls; let i=index">
+                <div [formGroup]="newField" class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" formControlName="name">
+                            <small *ngIf="newField.get('name').invalid" class="text-danger">
+                                Field Name required
+                            </small>          
+                        </div>    
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="datatype">Datatype</label>
+                            <select class="form-control" formControlName="datatype">
+                                <option value="" selected disabled>Select Datatype</option>
+                                <option *ngFor="let dataTypeOption of dataTypeOptions" [ngValue]="dataTypeOption.value">{{dataTypeOption.label}}</option>
+                            </select>
+                            <small *ngIf="newField.get('datatype').invalid" class="text-danger">
+                                Field Datatype required
+                            </small>         
+                        </div>  
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="name">Length</label>
+                            <div>
+                                <input type="number" class="form-control" min="1" formControlName="length">
+                                <small *ngIf="newField.get('length').invalid" class="text-danger">
+                                    Field Length required
+                                </small>  
+                            </div>           
+                        </div> 
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="name">Active</label>
+                            <div>
+                                <p-inputSwitch formControlName="active" onLabel="Yes" offLabel="No"></p-inputSwitch> 
+                            </div>           
+                        </div> 
+                    </div>
+                    <div class="col-md-1">
+                        <div class="form-group">   
+                            <button type="button" class="btn btn-secondary" (click)="removeField(i)"><span class="fa fa-close"></span></button>
+                        </div>                  
+                    </div>             
+                </div>         
+                
+            </div>
+        </div>   
+        <div *ngIf="stagingForm.get('fields').controls.length == 0">
+            No new Fields to Edit
+        </div>     
+    </form>
+</p-panel>

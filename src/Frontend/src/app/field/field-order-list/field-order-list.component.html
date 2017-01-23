@@ -1,27 +1,23 @@
 <div class="add-margin-bottom">
-<p-orderList [value]="fields" header="Reorder Fields">
-    <template let-field pTemplate="item">
-        <div class="ui-helper-clearfix">
-            <h5>{{fieldStatus.field.name}}</h5>
-            <div style="font-size:14px;margin:15px 5px 0 0"> 
-              <div>Datatype: {{fieldStatus.field.dataType}} Length: {{fieldStatus.field.length}}</div>
-              <div>Active: 
-                <span *ngIf="field.active" class="fa fa-check"></span>
-                <span *ngIf="!field.active" class="fa fa-close"></span>
-              </div>
-              <div style="float: right">
-                <span *ngIf="fieldStatus.isExisting">Existing Field</span>
-                <span *ngIf="!fieldStatus.isExisting">New Field</span>
-              </div>
+    <p-orderList [value]="fields" [responsive]="true" [listStyle]="{'height':'250px'}" [style]="{'width':'100%'}">
+        <template let-field pTemplate="item">
+            <div class="ui-helper-clearfix">
+                <h5>{{field.name}}</h5>
+                <div style="font-size:14px;margin:15px 5px 0 0">  
+                <div>Datatype: {{field.datatype}}</div>
+                <div>Length: {{field.length}}</div>
+                <div>Active: 
+                    <span *ngIf="field.active" class="fa fa-check"></span>
+                    <span *ngIf="!field.active" class="fa fa-close"></span>
+                </div>
+                <div style="float: right">
+                    <span *ngIf="field.existing">Existing Field</span>
+                    <span *ngIf="!field.existing">New Field</span>
+                </div>
+                </div>
             </div>
-        </div>
-    </template>
-    <template *ngIf="fields.length == 0" pTemplate="item">
-        <div class="ui-helper-clearfix">
-            No Fields currently in working set
-        </div>
-    </template>
-</p-orderList>
+        </template>
+    </p-orderList>
 </div>
-<button type="button" [disabled]="fields.length == 0" class="btn btn-secondary pull-right" (click)="confirmOrder()"><span class="fa fa-check"></span>Confirm Ordering</button>
+<button type="button" [disabled]="fieldsForm.get('fields').controls.length == 0" class="btn btn-secondary pull-right" (click)="confirmOrder()"><span class="fa fa-check"></span>Confirm Ordering</button>
 <p-confirmDialog header="Confirm Field Ordering" icon="fa fa-question-circle" width="425"><p-confirmDialog>

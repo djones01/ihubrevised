@@ -4,7 +4,7 @@
     <p-tabView>
         <p-tabPanel header="Add New Fields">
             <div class="add-padding-container scroll-container">
-                <new-fields [group]="fieldForm"></new-fields>
+                <new-fields [group]="fieldsForm" [editingFormat]="editingFormat"></new-fields>
             </div>    
         </p-tabPanel>
         <p-tabPanel header="Select Existing Fields">
@@ -12,9 +12,9 @@
                 <field-select-existing></field-select-existing>
             </div>      
         </p-tabPanel>
-        <p-tabPanel header="Current Working Set">
+        <p-tabPanel header="Current Working Set" *ngIf="editingFormat">
             <div class="add-padding-container">
-                <field-order-list></field-order-list>
+                <field-order-list [group]="fieldsForm"></field-order-list>
             </div>    
         </p-tabPanel>
     </p-tabView>

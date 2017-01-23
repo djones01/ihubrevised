@@ -1,5 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FieldStatus } from '../field';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { FormGroup, FormArray } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { DataObjectBuilderService } from '../../data-object/services/data-object-builder.service';
 
 @Component({
   selector: 'field-order-list',
@@ -7,15 +9,27 @@ import { FieldStatus } from '../field';
   styleUrls: ['./field-order-list.component.css']
 })
 export class FieldOrderListComponent implements OnInit {
-  @Input('fields') _fields: FieldStatus[];
+  @Input('group') 
+  fieldsForm: FormGroup;
+  fields: any[] = [];
+  formSub: Subscription;
+
   @Output() onItemsConfirmed = new EventEmitter();
 
-  fields: FieldStatus[];
-
-  constructor() {
-    this.fields = [];
+  constructor(private dataObjectBuilderService: DataObjectBuilderService) {
    }
 
   ngOnInit() {
+    this.dataObjectBuilderService.stagingFields.subscribe(fields => this.fields.push(fields));
+  }
+
+  confirmOrder(){
+    // update the seqnums of the fields then copy to form
+    if(this.fields && this.fields.length > 0){
+      for(var i = 0; i < this.fields.length; i++){
+        this.fields[i].seqNum = i+1;
+        (<FormArray>this.fieldsForm.get('fields')).controls[i].patchValue(this.fields[i]);
+      }
+    }
   }
 }

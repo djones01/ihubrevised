@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormArray } from '@angular/forms';
 import { ExtractionService } from '../extraction.service';
 import { DataObjectBuilderService } from '../../data-object/services/data-object-builder.service';
@@ -12,7 +12,7 @@ export class ExtractionComponent implements OnInit {
   @Input('group')
   extractForm: FormGroup;
   @Input() extractMode: string = "Fields";
-  fields: any[];
+  @Output() extractionComplete = new EventEmitter();
 
   addSourceFileInfo() {
         const control = <FormArray>this.extractForm.controls['fileInfos'];
@@ -29,7 +29,9 @@ export class ExtractionComponent implements OnInit {
   }
 
   uploadForExtraction(extractForm){
-    this.extractionService.extractFields(extractForm).subscribe(data => data);
+    this.extractionService.extractFields(extractForm).subscribe(data => this.extractionComplete.emit(data));
+    this.extractForm.setControl('fileInfos', new FormArray([this.dataObjectBuilderService.initSourceFileInfo()]));
+    this.extractForm.reset();
   }
 
   newExtractForm(){

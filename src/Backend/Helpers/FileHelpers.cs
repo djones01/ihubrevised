@@ -43,7 +43,7 @@ namespace Backend.Helpers
                 if (line.Count(c => c == delim) > 0)
                 {
                     var fields = line.Split(delim);
-                    foreach (var field in fields) extractedfields.Add(new Field(field, "text", field.Length));
+                    foreach (var field in fields) extractedfields.Add(new Field(field, "", 100));
                 }
                 else
                 {
@@ -100,13 +100,16 @@ namespace Backend.Helpers
             {
                 if(i >= fileInfo.StartLine)
                 {
-                    if (fileInfo.FixedLengthLines.Count > 0 && fileInfo.FixedLengthLines.Any(x => x.LineIndex == i))
+                    if(fileInfo.FixedLengthLines != null)
                     {
-                        line = this.ExtractFixedLengthLine(dataFile.RawLines[i], fileInfo.FixedLengthLines.First(x => x.LineIndex == i));
-                    }
+                        if (fileInfo.FixedLengthLines.Count > 0 && fileInfo.FixedLengthLines.Any(x => x.LineIndex == i))
+                        {
+                            line = this.ExtractFixedLengthLine(dataFile.RawLines[i-1], fileInfo.FixedLengthLines.First(x => x.LineIndex == i));
+                        }
+                    }  
                     else
                     {
-                        line = this.ExtractDelimitedLine(dataFile.RawLines[i], fileInfo.Delimiter);
+                        line = this.ExtractDelimitedLine(dataFile.RawLines[i-1], fileInfo.Delimiter);
                     }
                     if (line != null)
                         dataFile.Lines.Add(line);
@@ -116,13 +119,32 @@ namespace Backend.Helpers
 
         public Line CombineLines(Line combined, List<Line> lines)
         {
-            foreach(var line in lines)
+            try
             {
-                combined.Fields.Concat(line.Fields);
+                foreach (var line in lines)
+                {
+                    combined.Fields.AddRange(line.Fields);
+                }
             }
+            catch(Exception ex)
+            {
+                Log.Error(ex, "An error occurred while combining lines");
+            }  
             return combined;
         }
 
+        public Line CombineLine(Line combined, Line combineWith)
+        {
+            try
+            {
+                combined.Fields.AddRange(combineWith.Fields);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "An error occurred while combining lines");
+            }
+            return combined;
+        }
 
         public async Task<List<DataFile>> GetDataFiles(ExtractModel extractModel)
         {
@@ -145,12 +167,21 @@ namespace Backend.Helpers
             if (extractModel.PreserveFileOrdering)
             {
                 dataFiles.OrderByDescending(x => x.FileIndex);
+                extractModel.FileInfos.OrderByDescending(x => x.Index);
             }
             var combinedLine = new Line();
-            foreach (var dataFile in dataFiles)
+            for (int i = 0; i < dataFiles.Count; i++)
             {
-                // Combine the lines in each datafile, then up
-                CombineLines(combinedLine, dataFile.Lines);
+                if (extractModel.FileInfos[i].BatchProcessLines)
+                {
+                    // Combine the lines in each datafile, then up
+                    CombineLines(combinedLine, dataFiles[i].Lines);
+                }
+                else
+                {
+                    // Combine only the line at the start index
+                    CombineLine(combinedLine, dataFiles[i].Lines[extractModel.FileInfos[i].StartLine-1]);
+                }
             }
             return combinedLine.Fields;
         }
@@ -214,7 +245,11 @@ namespace Backend.Helpers
 
     public class Line
     {
-        public Line() { }
+        public Line()
+        {
+            Length = 0;
+            Fields = new List<Field>();
+        }
         public Line(int length, List<Field> fields)
         {
             Length = length;
@@ -231,6 +266,7 @@ namespace Backend.Helpers
         {
             FileName = fileName;
             RawLines = lines;
+            Lines = new List<Line>();
         }
         public int FileIndex { get; set; }
         public string FileName { get; set; }

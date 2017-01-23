@@ -7,8 +7,10 @@ import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
   styleUrls: ['./field-overview.component.css']
 })
 export class FieldOverviewComponent implements OnInit {
+  @Input()
+  editingFormat: boolean;
   @Input('group')
-  fieldForm: FormGroup;
+  fieldsForm: FormGroup;
 
   private showDialog;
 

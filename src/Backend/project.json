@@ -37,7 +37,6 @@
     "AspNet.Security.OAuth.Validation": "1.0.0-alpha2-final",
     "Serilog.Sinks.RollingFile": "3.3.0",
     "Microsoft.ApplicationInsights.AspNetCore": "1.0.0",
-    "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "1.0.0",
     "Microsoft.AspNetCore.Mvc.Core": "1.1.0"
   },
 

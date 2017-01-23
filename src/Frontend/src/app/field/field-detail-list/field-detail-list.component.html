@@ -1,0 +1,5 @@
+<p-dataScroller [value]="fieldsList" [rows]="10" [inline]="true" scrollHeight="300px">
+    <template let-field pTemplate="item">
+        <field-detail [field]="field"></field-detail>
+    </template>
+</p-dataScroller>

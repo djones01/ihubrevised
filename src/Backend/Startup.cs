@@ -57,7 +57,7 @@ namespace Backend
 
             services.AddMvc();
 
-            var connection = Configuration.GetConnectionString("DefaultConnection");
+            var connection = Configuration.GetConnectionString("WorkConnection");
 
             services.AddEntityFrameworkSqlServer().AddDbContext<GTiHubContext>(options => {
                 options.UseSqlServer(connection);
