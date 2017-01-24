@@ -1,15 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
-import { BehaviorSubject } from "rxjs/BehaviorSubject";
-import { Observable } from "rxjs/Observable";
-import { Field } from "../../field/field";
 
 @Injectable()
 export class DataObjectBuilderService {
-
-    private _fields: BehaviorSubject<Field[]> = new BehaviorSubject([]);
-    stagingFields: Observable<Field[]> = this._fields.asObservable();
-
   // Init form models
     initDataObject() {
         return this._fb.group({
@@ -40,6 +33,8 @@ export class DataObjectBuilderService {
                 perFileFormats: false,
                 preserveFileOrdering: true,
                 fields: this._fb.array([]),
+                extractedFileInfos: this._fb.array([]),
+                extractedApiInfos: this._fb.array([]),
                 apiInfos: this._fb.array([]),
                 fileInfos: this._fb.array([])
             });
@@ -66,7 +61,7 @@ export class DataObjectBuilderService {
             batchProcessLines: false,
             delimiter: '',
             lineFormat: ['', Validators.required],
-            startLine: [1],
+            startLine: [1, Validators.required],
             flls: this._fb.array([]),
             file: [null, Validators.required]
         });
@@ -127,10 +122,6 @@ export class DataObjectBuilderService {
           active: true,
           existing: false
       });
-  }
-
-  setStagedFields(fields){
-      this._fields.next(fields);
   }
 
   constructor(private _fb: FormBuilder) { }

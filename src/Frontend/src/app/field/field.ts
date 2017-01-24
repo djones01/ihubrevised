@@ -1,4 +1,5 @@
 export interface Field {
+    seqNum?: number;
     fieldId?: number;
     name: string;
     datatype: string;
@@ -17,7 +18,8 @@ export class Field implements Field {
         public datatype: string,
         public length: number,
         public active: boolean,
-        public existing?: boolean
+        public existing?: boolean,
+        public seqNum?: number
         ) {}
     
     public static isEquivalent(a: Field, b: Field){

@@ -3,6 +3,7 @@ import { Field } from '../field';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 import { DataObjectBuilderService } from '../../data-object/services/data-object-builder.service';
 import { FieldService } from '../field.service';
+import { FieldOverviewService } from '../field-overview.service';
 
 @Component({
   selector: 'new-fields',
@@ -37,6 +38,7 @@ export class NewFieldsComponent implements OnInit {
         }
       }
     }
+    this.fields = fields;
     // delay adding to form if warning
     if(this.warnList.length > 0){   
       this.showConfirmDialog();
@@ -47,7 +49,7 @@ export class NewFieldsComponent implements OnInit {
   }
 
   confirmFields(){
-    this.editFields = this.fields;
+    this.fieldOverviewService.setEditingFields(this.fields);
   }
 
   denyWarnedFields(){
@@ -63,7 +65,9 @@ export class NewFieldsComponent implements OnInit {
       this.displayWarning = !this.displayWarning;
     }
 
-  constructor(private dataObjectBuilderService: DataObjectBuilderService, private fieldsService: FieldService) { }
+  constructor(private dataObjectBuilderService: DataObjectBuilderService, 
+  private fieldsService: FieldService,
+  private fieldOverviewService: FieldOverviewService) { }
 
   ngOnInit() {
     this.fieldsService.fields.subscribe(existingFields => this.existingFields == existingFields);

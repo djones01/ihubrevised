@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 import { DataObjectBuilderService } from '../services/data-object-builder.service';
+import { DataObjectService } from '../services/data-object.service';
 
 @Component({
   selector: 'data-object-edit',
@@ -11,7 +12,8 @@ export class DataObjectEditComponent implements OnInit {
     public dataObjectForm: FormGroup;
     
     onSubmit(dataObject: any) {
-
+        this.dataObjectService.add(dataObject);
+        this.newDataObject();
     }
 
     addDataObjectFormat() {
@@ -38,7 +40,7 @@ export class DataObjectEditComponent implements OnInit {
         this.dataObjectForm = this.dataObjectBuilderService.initDataObject();
     }
 
-    constructor(private dataObjectBuilderService: DataObjectBuilderService) { }
+    constructor(private dataObjectBuilderService: DataObjectBuilderService, private dataObjectService: DataObjectService) { }
 
     ngOnInit() {
         this.newDataObject();

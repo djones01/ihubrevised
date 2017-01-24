@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
+import { FieldOverviewService } from '../field-overview.service';
 
 @Component({
   selector: 'field-overview',
@@ -15,12 +16,13 @@ export class FieldOverviewComponent implements OnInit {
   private showDialog;
 
   toggleDialog(){
-    this.showDialog = !this.showDialog;
+    this.fieldOverviewService.showEditingDialog();
   }
 
-  constructor() { }
+  constructor(private fieldOverviewService: FieldOverviewService) { }
 
   ngOnInit() {
+    this.fieldOverviewService.showDialog.subscribe(showDialog => this.showDialog = showDialog);
   }
 
 }

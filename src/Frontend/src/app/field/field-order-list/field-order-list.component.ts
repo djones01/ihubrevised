@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angu
 import { FormGroup, FormArray } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { DataObjectBuilderService } from '../../data-object/services/data-object-builder.service';
+import { FieldOverviewService } from '../field-overview.service';
+import { Field } from '../field';
 
 @Component({
   selector: 'field-order-list',
@@ -11,25 +13,37 @@ import { DataObjectBuilderService } from '../../data-object/services/data-object
 export class FieldOrderListComponent implements OnInit {
   @Input('group') 
   fieldsForm: FormGroup;
-  fields: any[] = [];
+  fields: Field[] = [];
   formSub: Subscription;
 
   @Output() onItemsConfirmed = new EventEmitter();
 
-  constructor(private dataObjectBuilderService: DataObjectBuilderService) {
+  resequenceFields(){
+    for(var i = 1; i <= this.fields.length; i++){
+      this.fields[i-1].seqNum = i;
+    }
+  }
+
+  constructor(private dataObjectBuilderService: DataObjectBuilderService, private fieldOverviewService: FieldOverviewService) {
    }
 
   ngOnInit() {
-    this.dataObjectBuilderService.stagingFields.subscribe(fields => this.fields.push(fields));
+    this.fieldOverviewService.workingFieldSet.subscribe(fields => {
+      this.fields = fields;
+      let fieldsControl = <FormArray>this.fieldsForm.get('fields');
+      if(fieldsControl.length > 0){
+        this.fields = fieldsControl.value;
+      }
+    });
   }
 
   confirmOrder(){
-    // update the seqnums of the fields then copy to form
-    if(this.fields && this.fields.length > 0){
-      for(var i = 0; i < this.fields.length; i++){
-        this.fields[i].seqNum = i+1;
-        (<FormArray>this.fieldsForm.get('fields')).controls[i].patchValue(this.fields[i]);
-      }
+    const control = <FormArray>this.fieldsForm.get('fields');
+    for(var i = 0; i < this.fields.length; i++){
+      control.push(this.dataObjectBuilderService.initField());
     }
+    control.patchValue(this.fields);
+    this.fieldOverviewService.clearWorkingSet();
+    this.fieldOverviewService.hideEditingDialog();
   }
 }

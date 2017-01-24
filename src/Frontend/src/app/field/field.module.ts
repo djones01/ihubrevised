@@ -29,6 +29,7 @@ import { FileHandlingModule } from '../file-handling/file-handling.module';
 
 //services
 import { FieldService } from './field.service';
+import { FieldOverviewService } from './field-overview.service';
 import { FieldOptions } from './field-options';
 
 @NgModule({
@@ -48,7 +49,7 @@ import { FieldOptions } from './field-options';
     FileHandlingModule
   ],
   declarations: [FieldEditComponent, FieldEditListComponent, FieldOverviewComponent, FieldSelectExistingComponent, FieldOrderListComponent, NewFieldsComponent, FieldDetailComponent, FieldDetailListComponent],
-  providers: [FieldService, FieldOptions, ConfirmationService],
+  providers: [FieldService, FieldOptions, ConfirmationService, FieldOverviewService],
   exports: [FieldOverviewComponent, FieldSelectExistingComponent]
 })
 export class FieldModule { }

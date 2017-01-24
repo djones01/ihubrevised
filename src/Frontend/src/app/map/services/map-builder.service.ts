@@ -34,10 +34,11 @@ export class MapBuilderService {
     }
 
     buildRuleField() {
+        let field = this._fb.control(null, Validators.required)
         return this._fb.group({        
             seqNum: [this.ruleFieldSeqNum++],
-            append: [''],
-            prepend: [''],
+            append: [{ value: '', disabled: field.invalid }],
+            prepend: [{ value: '', disabled: field.invalid }],
             custom_Format: [''],
             field: [null, Validators.required],
             trim: [false]

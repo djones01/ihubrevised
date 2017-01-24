@@ -29,9 +29,12 @@ export class ExtractionComponent implements OnInit {
   }
 
   uploadForExtraction(extractForm){
-    this.extractionService.extractFields(extractForm).subscribe(data => this.extractionComplete.emit(data));
-    this.extractForm.setControl('fileInfos', new FormArray([this.dataObjectBuilderService.initSourceFileInfo()]));
-    this.extractForm.reset();
+    this.extractionService.extractFields(extractForm).subscribe(data => {
+      this.extractionComplete.emit(data);
+      // push all current file infos and api infos to the previously extracted list
+      (<FormArray>this.extractForm.get('extractedFileInfos')).push(this.extractForm.get('fileInfos'));
+      this.extractForm.setControl('fileInfos', new FormArray([this.dataObjectBuilderService.initSourceFileInfo()]));
+    }, () => this.newExtractForm()); 
   }
 
   newExtractForm(){

@@ -43,6 +43,9 @@
             <div class="form-group">
               <label>Beginning Line Number</label>
               <input type="number" class="form-control" min="1" formControlName="startLine" />       
+              <small *ngIf="fileInfoForm.get('startLine').invalid" class="text-danger">
+                    Start Line required
+                </small> 
           </div>
         </div>
         <div class="col-md-4">
